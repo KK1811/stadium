@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import Img from 'react-image'
+// import Img from 'react-image'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-const BASE_URL = "10.0.35.200:8000"
-let Imgg = require('react-image')
+
+import { AUTH_TOKEN } from '../auth/constants'
+// const BASE_URL = "10.0.35.200:8000"
+// let Imgg = require('react-image')
 const GET_GAMES = gql`
     query {
         games{
@@ -28,6 +30,9 @@ class Gamestore extends Component{
                         if (error) return `Error! ${error.message}`;
 
                         console.log(data);
+                        var tokenValue = localStorage.getItem("token")
+                        console.log(tokenValue)
+                        console.log(AUTH_TOKEN)
 
                         return(
                             <div className="container">
@@ -43,11 +48,11 @@ class Gamestore extends Component{
                                     
                                     </div>
                                     <br></br>
-                                    <img src={'10.0.35.200:8000${game.images[0].url}'}/>
+                                    <img src={`http://10.0.34.205:8000${game.images[0].url}`} />
                                 </div>
                         ))}
                             </div>
-                                    
+                        );           
                     }}
                 </Query>
             </div>

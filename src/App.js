@@ -7,25 +7,31 @@ import signup from './components/auth/signup'
 import landingPage from './components/home/landingPage'
 import gamestore from './components/store/gamestore'
 import merchstore from './components/store/merchstore'
+import profile from './components/user/profile'
+import loggedin from './components/auth/loggedin'
 // import logout from './components/auth/logout'
 
 function App() {
   // _reload = () => {window.location.reload()}
   return (
-    <BrowserRouter>
+    
     <div className="App">
-      <Navbar />
-      <br></br><br></br><br></br>
+    <BrowserRouter>
+      {/*<Navbar /> */}
+      {/* <br></br><br></br><br></br> */}
       <Switch>
         <Route exact path='/login' component={login} />
+        <Route exact path='/loggedin' component={loggedin} />
         <Route exact path='/signup' component={signup} />
         <Route exact path='/' component={landingPage} />
         <Route exact path ='/gamestore' component={gamestore} />
         <Route exact path ='/merchstore' component={merchstore} />
+        <Route exact path ='/profile' component={profile} />
         {/* <Route exact path='/logout' component={logout} /> */}
       </Switch>
+      </BrowserRouter>
     </div>
-    </BrowserRouter>
+    
   );
 }
 

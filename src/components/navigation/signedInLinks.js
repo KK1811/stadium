@@ -17,7 +17,7 @@ const SignedInLinks = () => {
 
         <ul className="navbar-nav mr-auto float-right">
             
-            <li className="nav-item active"><NavLink to='/'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
+            <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
             <li className="nav-item active"><Logout /></li>
         </ul>
         </div>

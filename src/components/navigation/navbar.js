@@ -6,7 +6,7 @@ import { AUTH_TOKEN } from '../auth/constants'
 
 const Navbar = () => {
     // _reload = () => {window.location.reload();}
-    var tokenValue = localStorage.getItem(AUTH_TOKEN);
+    var tokenValue = localStorage.getItem("token");
     const links = tokenValue===null ? <div className="float-right"><SignedOutLinks /></div> : <div className="container"><SignedInLinks /></div>
     console.log(tokenValue)
     return(
