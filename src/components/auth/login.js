@@ -78,21 +78,9 @@ class Login extends Component {
 
   _saveUserData = token => {
     localStorage.setItem("token", token)
-<<<<<<< HEAD
-    console.log(localStorage["token"])
-    var aValue = localStorage.getItem("token");
-    console.log(aValue)
-    // localStorage.removeItem(AUTH_TOKEN)
-    // console.log(AUTH_TOKEN)
-
-    // localStorage.setItem('bgcolor', 'red');
-    // var currentColor = localStorage.getItem('bgcolor');
-    // console.log(currentColor)
-=======
     console.log("Token: "+localStorage["token"])
     var aValue = localStorage.getItem("token");
     console.log("Token: "+aValue)
->>>>>>> 8640fad553a6af75cebaccdb015cd82c37d8f0fb
   }
 }
 

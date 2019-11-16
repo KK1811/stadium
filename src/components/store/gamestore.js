@@ -33,7 +33,6 @@ class Gamestore extends Component{
                         console.log(data);
                         var tokenValue = localStorage.getItem("token")
                         console.log(tokenValue)
-                        console.log(AUTH_TOKEN)
 
                         return(
                             <div className="container">
