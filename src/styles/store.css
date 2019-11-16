@@ -1,0 +1,13 @@
+.itemIcon {
+    height: 160px;
+    width: 160px;
+    float: left;
+}
+
+.icon {
+    float: left;
+}
+
+.column{
+    width: 3000px;
+}

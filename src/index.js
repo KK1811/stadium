@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -17,15 +17,15 @@ import { AUTH_TOKEN } from './constants'
 
 // 2
 const httpLink = createHttpLink({
-  uri: 'http://10.0.35.200:8000/graphql/'
+  uri: 'http://10.0.34.205:8000/graphql/'
 })
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem(AUTH_TOKEN)
+  const token = localStorage.getItem("token")
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : ''
+      Authorization: token ? `JWT ${token}` : ''
     }
   }
 })

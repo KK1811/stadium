@@ -27,7 +27,7 @@ const Logout = () => {
     // console.log('inside logout')
     // sessionStorage.removeItem(AUTH_TOKEN)
     return(
-        <div className="float-right"><NavLink to='/'><button type="button" className="btn btn-primary right" onClick={localStorage.removeItem(AUTH_TOKEN)}>Logout</button></NavLink></div>
+        <div className="float-right"><NavLink to='/'><button type="button" className="btn btn-primary right" onClick={localStorage.removeItem("token")}>Logout</button></NavLink></div>
     );
 } 
 

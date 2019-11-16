@@ -87,7 +87,7 @@ class Login extends Component {
         </Mutation>
         <br></br><br></br>
         
-        <p>Don't have an accout? <Link to="/signup">Signup</Link> </p>
+        <p>Dont have an accout? <Link to="/signup">Signup</Link> </p>
         
         </div>
 
@@ -105,9 +105,9 @@ class Login extends Component {
   
 
   _saveUserData = token => {
-    localStorage.setItem(AUTH_TOKEN, token)
-    console.log(AUTH_TOKEN)
-    var aValue = localStorage.getItem(AUTH_TOKEN);
+    localStorage.setItem("token", token)
+    console.log(localStorage["token"])
+    var aValue = localStorage.getItem("token");
     console.log(aValue)
     // localStorage.removeItem(AUTH_TOKEN)
     // console.log(AUTH_TOKEN)

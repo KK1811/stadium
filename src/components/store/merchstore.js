@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import '../../styles/store.css';
 
 const GET_MERCH = gql`
     query {
@@ -45,6 +46,7 @@ class Merchstore extends Component{
                                     <button className="btn btn-primary">Buy</button>
                                     </div>
                                     <br></br>
+                                    <img src={`http://10.0.34.205:8000${merch.images[0].url}`} className="itemIcon"/>
                                 </div>
                         ))}
                             </div>

@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import Img from 'react-image'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-const BASE_URL = "10.0.35.200:8000"
+import '../../styles/store.css';
+import { Link } from 'react-router-dom';
+
+const BASE_URL = "10.0.34.205:8000"
 let Imgg = require('react-image')
 const GET_GAMES = gql`
     query {
@@ -33,21 +36,21 @@ class Gamestore extends Component{
                             <div className="container">
                                 <h1>Games</h1><br></br>
                                 {data.games.map(game => (
-                                    
-                                <div className="card border-primary mb-3" key={game.id}>
-                                    <h3 className="card-title">{game.name}</h3>
-                                    <p className="container"><b>Description: </b>{game.description}</p>
-                                    <div className="container col-sm-5">
-                                    <h5>Price: {game.price}</h5>
-                                    <button className="btn btn-primary">Buy</button>
-                                    
-                                    </div>
-                                    <br></br>
-                                    <img src={'10.0.35.200:8000${game.images[0].url}'}/>
+                                <Link to={`/gamestore/${game.id}`}>
+                                <div className="card border-primary" key={game.id}>
+                                
+                                    <img src={`http://10.0.34.205:8000${game.images[0].url}`} className="col-3"/> 
+
+                                    <div className="col-3">                                    
+                                        <h3 className="card-title">{game.name}</h3>                                        
+                                        <h5>Price: {game.price}</h5>
+                                    </div>    
+                                        
                                 </div>
+                                </Link>
                         ))}
                             </div>
-                                    
+                        )              
                     }}
                 </Query>
             </div>
