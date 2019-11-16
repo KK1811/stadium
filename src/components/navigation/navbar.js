@@ -5,8 +5,10 @@ import SignedOutLinks from './signedOutLinks'
 import { AUTH_TOKEN } from '../auth/constants'
 
 const Navbar = () => {
+    // _reload = () => {window.location.reload();}
     var tokenValue = localStorage.getItem(AUTH_TOKEN);
-    const links = tokenValue==='auth-token' ? <SignedOutLinks /> : <SignedInLinks />
+    const links = tokenValue===null ? <div className="float-right"><SignedOutLinks /></div> : <div className="container"><SignedInLinks /></div>
+    console.log(tokenValue)
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container">

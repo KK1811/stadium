@@ -51,40 +51,58 @@ class Signup extends Component {
   render() {
     const { username, email, password, DOB, phoneNo, gender} = this.state
     return (
-      <div>
-        <h4>Signup</h4>
-        <div className="flex flex-column">
+      <div className="container col-sm-5 card border-primary">
+        <br></br><h4>Signup</h4><br></br>
+        <div className="form-group">
+          <br></br>
+          <label htmlFor="exampleTextarea">Username</label>
+          <br></br>
           <input
+            className="form-group"
             value={username}
             onChange={e => this.setState({ username: e.target.value })}
             type="text"
             placeholder="Username"
           />
+          <br></br>
+          <label htmlFor="exampleInputEmail1">Email</label>
+          <br></br>
           <input
+            className="form-group"
             value={email}
             onChange={e => this.setState({ email: e.target.value })}
-            type="text"
+            type="email"
             placeholder="Email"
           />
+          <br></br>
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <br></br>
           <input
+            className="form-group"
             value={password}
             onChange={e => this.setState({ password: e.target.value })}
             type="password"
             placeholder="Password"
           />
+          <br></br>
           <input
+            className="form-group"
             value={DOB}
             onChange={e => this.setState({ DOB: e.target.value })}
             type="date"
             placeholder="Date of Birth"
           />
+          <br></br>
           <input
+            className="form-group"
             value={phoneNo}
             onChange={e => this.setState({ phoneNo: e.target.value })}
             type="int"
             placeholder="phoneNo"
           />
+          <br></br>
           <input
+            className="form-group"
             value={gender}
             onChange={e => this.setState({ gender: e.target.value })}
             type="int"
@@ -98,15 +116,16 @@ class Signup extends Component {
             onCompleted={data => this._confirm(data)}
         >
             {signup => (
-            <div className="pointer mr2 button" onClick={signup}>
+            <button className="btn btn-primary" onClick={signup}>
                 {'Signup'}
-            </div>
+            </button>
             )}
 
         </Mutation>
         
-        <p>Already have an accout?</p>
-        <Link to="/login">Login</Link>
+        <br></br><br></br>
+        <p>Already have an accout? <Link to="/login">Login</Link></p>
+        
         
         </div>
 

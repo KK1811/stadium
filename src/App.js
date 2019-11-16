@@ -5,18 +5,24 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
 import signup from './components/auth/signup'
 import landingPage from './components/home/landingPage'
-import store from './components/store/store'
+import gamestore from './components/store/gamestore'
+import merchstore from './components/store/merchstore'
+// import logout from './components/auth/logout'
 
 function App() {
+  // _reload = () => {window.location.reload()}
   return (
     <BrowserRouter>
     <div className="App">
       <Navbar />
+      <br></br><br></br><br></br>
       <Switch>
         <Route exact path='/login' component={login} />
         <Route exact path='/signup' component={signup} />
         <Route exact path='/' component={landingPage} />
-        <Route exact path ='/store' component={store} />
+        <Route exact path ='/gamestore' component={gamestore} />
+        <Route exact path ='/merchstore' component={merchstore} />
+        {/* <Route exact path='/logout' component={logout} /> */}
       </Switch>
     </div>
     </BrowserRouter>
