@@ -4,17 +4,6 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
 
-// import { Link } from 'react-router-dom'
-
-
-// const SIGNUP_MUTATION = gql`
-//   mutation SignupMutation($username: String!, $password: String!) {
-//     signup(username: $username, password: $password) {
-//       token
-//     }
-//   }
-// `
-
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($username: String!, $password: String!) {
     tokenAuth(email: $username, password: $password) {
@@ -22,22 +11,6 @@ const LOGIN_MUTATION = gql`
     }
   }
 `
-
-// const LOGIN_MUTATION = gql`
-//   mutation {
-//     tokenAuth(username: $username, password: $password) {
-//       token
-//     }
-//   } 
-// `
-
-// const LOGIN_MUTATION = gql`
-//   mutation {
-//     tokenAuth(username: "kartik", password: "1234") {
-//       token
-//     }
-//   }
-// `
 
 
 class Login extends Component {
@@ -90,15 +63,14 @@ class Login extends Component {
         <p>Dont have an accout? <Link to="/signup">Signup</Link> </p>
         
         </div>
-
       </div>
     )
   }
 
   _confirm = async data => {
-    // console.log(data.tokenAuth.token)
+    console.log(data.tokenAuth.token)
     const token = data.tokenAuth.token
-    // console.log(token)
+    console.log(token)
     this._saveUserData(token)
     this.props.history.push(`/`)
   }
@@ -106,6 +78,7 @@ class Login extends Component {
 
   _saveUserData = token => {
     localStorage.setItem("token", token)
+<<<<<<< HEAD
     console.log(localStorage["token"])
     var aValue = localStorage.getItem("token");
     console.log(aValue)
@@ -115,6 +88,11 @@ class Login extends Component {
     // localStorage.setItem('bgcolor', 'red');
     // var currentColor = localStorage.getItem('bgcolor');
     // console.log(currentColor)
+=======
+    console.log("Token: "+localStorage["token"])
+    var aValue = localStorage.getItem("token");
+    console.log("Token: "+aValue)
+>>>>>>> 8640fad553a6af75cebaccdb015cd82c37d8f0fb
   }
 }
 

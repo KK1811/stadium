@@ -46,7 +46,12 @@ class Merchstore extends Component{
                                     <button className="btn btn-primary">Buy</button>
                                     </div>
                                     <br></br>
+<<<<<<< HEAD
                                     <img src={`http://10.0.34.205:8000${merch.images[0].url}`} className="itemIcon"/>
+=======
+                                    <img src={`http://10.0.34.205:8000${merch.images[0].url}`} alt="" />
+                                    
+>>>>>>> 8640fad553a6af75cebaccdb015cd82c37d8f0fb
                                 </div>
                         ))}
                             </div>

@@ -15,13 +15,15 @@ import { AUTH_TOKEN } from './constants'
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+//const token = 'JWT' + localStorage.getItem("token")
+
 // 2
 const httpLink = createHttpLink({
-  uri: 'http://10.0.34.205:8000/graphql/'
+  uri: 'http://10.0.34.205:8000/graphql/',
 })
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
   return {
     headers: {
       ...headers,

@@ -13,31 +13,6 @@ const SIGNUP_MUTATION = gql`
   }
 `
 
-// const LOGIN_MUTATION = gql`
-//   mutation LoginMutation($username: String!, $password: String!) {
-//     tokenAuth(username: $username, password: $password) {
-//       token
-//     }
-//   }
-// `
-
-// const LOGIN_MUTATION = gql`
-//   mutation {
-//     tokenAuth(username: $username, password: $password) {
-//       token
-//     }
-//   } 
-// `
-
-// const LOGIN_MUTATION = gql`
-//   mutation {
-//     tokenAuth(username: "kartik", password: "1234") {
-//       token
-//     }
-//   }
-// `
-
-
 class Signup extends Component {
   state = {
     username: '',
@@ -53,12 +28,12 @@ class Signup extends Component {
     return (
       <div className="container col-sm-5 card border-primary">
         <br></br><h4>Signup</h4><br></br>
+
         <div className="form-group">
-          <br></br>
           <label htmlFor="exampleTextarea">Username</label>
           <br></br>
           <input
-            className="form-group"
+            className="form-group container"
             value={username}
             onChange={e => this.setState({ username: e.target.value })}
             type="text"
@@ -68,7 +43,7 @@ class Signup extends Component {
           <label htmlFor="exampleInputEmail1">Email</label>
           <br></br>
           <input
-            className="form-group"
+            className="form-group container"
             value={email}
             onChange={e => this.setState({ email: e.target.value })}
             type="email"
@@ -78,37 +53,49 @@ class Signup extends Component {
           <label htmlFor="exampleInputPassword1">Password</label>
           <br></br>
           <input
-            className="form-group"
+            className="form-group container"
             value={password}
             onChange={e => this.setState({ password: e.target.value })}
             type="password"
             placeholder="Password"
           />
           <br></br>
+          <label htmlFor="exampleTextarea">Date of Birth</label>
+          <br></br>
           <input
-            className="form-group"
+            className="form-group container"
             value={DOB}
             onChange={e => this.setState({ DOB: e.target.value })}
             type="date"
             placeholder="Date of Birth"
           />
           <br></br>
+          <label htmlFor="exampleTextarea">Phone Number</label>
+          <br></br>
           <input
-            className="form-group"
+            className="form-group container"
             value={phoneNo}
             onChange={e => this.setState({ phoneNo: e.target.value })}
             type="int"
             placeholder="phoneNo"
           />
           <br></br>
-          <input
-            className="form-group"
+          <label htmlFor="exampleTextarea">Gender</label>
+          <br></br>
+          {/* <input
+            className="form-group container"
             value={gender}
             onChange={e => this.setState({ gender: e.target.value })}
             type="int"
             placeholder="gender"
-          />
+          /> */}
+          <select class="form-control" id="exampleSelect1" onChange={e => this.setState({ gender: parseInt(e.target.value) })}>
+            <option value='1' >Male</option>
+            <option value='0'>Female</option>
+            <option value='2'>Other</option>
+          </select>
         </div>
+
         <div className="flex mt3">
         <Mutation
             mutation={SIGNUP_MUTATION}
@@ -135,16 +122,9 @@ class Signup extends Component {
 
   _confirm = async data => {
     console.log(data)
-    // const { token } = data.tokenAuth.token
-    // console.log(token)
-    // this._saveUserData(token)
-    this.props.history.push(`/login`)
+    this.props.history.push(`/loggedin`)
   }
   
-
-//   _saveUserData = token => {
-//     localStorage.setItem(AUTH_TOKEN, token)
-//   }
 }
 
 export default Signup

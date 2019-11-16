@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Img from 'react-image'
+// import Img from 'react-image'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import '../../styles/store.css';
@@ -31,6 +31,9 @@ class Gamestore extends Component{
                         if (error) return `Error! ${error.message}`;
 
                         console.log(data);
+                        var tokenValue = localStorage.getItem("token")
+                        console.log(tokenValue)
+                        console.log(AUTH_TOKEN)
 
                         return(
                             <div className="container">
@@ -50,7 +53,7 @@ class Gamestore extends Component{
                                 </Link>
                         ))}
                             </div>
-                        )              
+                        );           
                     }}
                 </Query>
             </div>
