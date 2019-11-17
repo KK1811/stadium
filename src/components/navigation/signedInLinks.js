@@ -13,8 +13,6 @@ const SignedInLinks = () => {
             <li className="nav-item active"><NavLink to='/'><div className="float-left"><button type="button" className="btn btn-primary right">Library</button></div></NavLink></li>
             <li className="nav-item active"><NavLink to='/friends'><div className="float-right"><button type="button" className="btn btn-primary right">Friends</button></div></NavLink></li>
             
-            {/* <li className="nav-item active"><NavLink to='/logout'><div className="float-right"><button type="button" className="btn btn-primary right">Logout</button></div></NavLink></li> */}
-            
         </ul>
 
         <ul className="navbar-nav mr-auto float-right">
