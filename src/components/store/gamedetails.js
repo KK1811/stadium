@@ -48,12 +48,13 @@ class Gamedetails extends Component{
 
                     return(
                         <div>
-                            <img src={`http://10.0.34.205:8000${data.game.images[0].url}`} alt="" className="col-5" />
                             <br></br><br></br><br></br>
                             <h1>{data.game.name}</h1>
                             <h3><b>Description: </b>{data.game.description}</h3>
                             <br></br>
-                            <h3><b>Price: </b>{data.game.price}</h3>
+                            <img src={`http://10.0.34.205:8000${data.game.images[0].url}`} alt="" className="col-5" />
+                            <br></br>
+                            <h3><b>Price: </b>₹{data.game.price}</h3>
                             <br></br>
                             <Link to={`/gamestore/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
                             <br></br><br></br><br></br>
