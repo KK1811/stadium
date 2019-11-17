@@ -43,13 +43,13 @@ class Gamestore extends Component{
                                 <Link to={`/gamestore/${game.id}`}>
                                 <div className="card border-primary" key={game.id}>
                                 
-                                    <img src={`http://10.0.34.205:8000${game.images[0].url}`} className="col-3" alt="" /> 
-
-                                    <div className="col-3">                                    
+                                    <img src={`http://10.0.34.205:8000${game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}} /> 
+                                    <center>
+                                    <div className="col-3" style={{bottom: "85px"}}>                                    
                                         <h3 className="card-title">{game.name}</h3>                                        
                                         <h5>Price: ₹{game.price}</h5>
                                     </div>    
-                                        
+                                    </center>
                                 </div>
                                 </Link>
                         ))}
