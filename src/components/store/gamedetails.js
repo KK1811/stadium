@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Navbar from '../navigation/navbar';
+// import Navbar from '../navigation/navbar';
+import SignedInLinks from '../navigation/signedInLinks';
 import {Link} from 'react-router-dom';  
 
 const GET_DETAILS = gql`
@@ -36,7 +37,8 @@ class Gamedetails extends Component{
         console.log({id})
         return(
             <div>
-            {/*<Navbar /><br></br><br></br>   */}
+            {/* <Navbar /><br></br><br></br>   */}
+            <SignedInLinks /><br></br><br></br>  
                 <Query query={GET_DETAILS} variables={{ id }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';

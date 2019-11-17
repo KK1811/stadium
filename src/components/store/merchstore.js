@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import '../../styles/store.css';
-import Navbar from '../navigation/navbar';
+// import Navbar from '../navigation/navbar';
+// import SignedInLinks from '../navigation/signedInLinks';
 
 const GET_MERCH = gql`
     query {
@@ -29,6 +30,7 @@ class Merchstore extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
+            {/* <SignedInLinks /> */}
                 <Query query={GET_MERCH}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';

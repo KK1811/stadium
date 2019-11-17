@@ -2,7 +2,9 @@ import React,{Component} from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import Navbar from '../navigation/navbar';
+// import Navbar from '../navigation/navbar';
+// import SignedInLinks from '../navigation/signedInLinks';
+// import inNavbar from '../navigation/inNav'
 
 const GET_LIBRARY = gql`
     query GameOwned($userId: Int!){
@@ -29,6 +31,8 @@ class Library extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
+            {/* <SignedInLinks /> */}
+            <inNavbar />
                 <Query query={GET_LIBRARY} variables={{ userId }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';

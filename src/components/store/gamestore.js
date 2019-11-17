@@ -4,7 +4,8 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import '../../styles/store.css';
 import { Link } from 'react-router-dom';
-import Navbar from '../navigation/navbar';
+// import Navbar from '../navigation/navbar';
+// import SignedInLinks from '../navigation/signedInLinks';
 
 // const BASE_URL = "10.0.34.205:8000"
 // let Imgg = require('react-image')
@@ -27,6 +28,7 @@ class Gamestore extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
+            {/* <SignedInLinks /> */}
                 <Query query={GET_GAMES}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';
