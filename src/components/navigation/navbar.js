@@ -5,7 +5,7 @@ import SignedOutLinks from './signedOutLinks'
 
 const Navbar = () => {
     var tokenValue = localStorage.getItem("token");
-    const links = tokenValue===null ? <div className="float-right"><SignedOutLinks /></div> : <div className="container"><SignedInLinks /></div>
+    const links = tokenValue === null ? <div className="float-right"><SignedOutLinks /></div> : <div className="container"><SignedInLinks /></div>
     console.log(tokenValue)
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

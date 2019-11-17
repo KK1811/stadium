@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Navbar from '../navigation/navbar'
-import {Link} from 'react-router-dom'
+import Navbar from '../navigation/navbar';
+import {Link} from 'react-router-dom';  
 
 const GET_DETAILS = gql`
-    query Game($id: Int!){
+    query Games($id: Int!){
         game(id: $id){
             id
             name
@@ -36,7 +36,7 @@ class Gamedetails extends Component{
         console.log({id})
         return(
             <div>
-                <Navbar /><br></br><br></br><br></br>
+            {/*<Navbar /><br></br><br></br>   */}
                 <Query query={GET_DETAILS} variables={{ id }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';
@@ -59,7 +59,7 @@ class Gamedetails extends Component{
                             <div>
                                 {data.game.merchandiseSet.map(merch => (
                                     <div>
-                                        <img src={`http://10.0.34.205:8000${data.game.images[0].url}`} alt="" className="col-3" ></img>
+                                        <img src={`http://10.0.34.205:8000${merch.images[0].url}`} alt="" className="col-3" ></img>
                                     </div>
                                 )
 

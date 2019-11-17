@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
-import Navbar from '../navigation/navbar'
+import Navbar from '../navigation/navbar';
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($username: String!, $password: String!) {
@@ -67,7 +67,7 @@ class Login extends Component {
           
           </div>
         </div>
-      </div>  
+      </div>
     )
   }
 

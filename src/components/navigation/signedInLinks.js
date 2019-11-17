@@ -1,6 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Logout from '../auth/logout'
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
+const GET_UID = gql`
+    query {
+        me{
+            id
+        }
+    }
+`
 
 
 
@@ -15,13 +25,13 @@ const SignedInLinks = () => {
             
         </ul>
 
-        <ul className="navbar-nav mr-auto float-right">
-            
-            <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
-            <li className="nav-item active"><Logout /></li>
-        </ul>
-        </div>
-    )
+                    <ul className="navbar-nav mr-auto float-right">
+                        
+                        <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
+                        <li className="nav-item active"><Logout /></li>
+                    </ul>
+                </div>
+            )
 }
 
 export default SignedInLinks

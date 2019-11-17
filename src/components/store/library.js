@@ -1,32 +1,35 @@
-import React, {Component} from 'react'
+import React,{Component} from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Navbar from '../navigation/navbar'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Navbar from '../navigation/navbar';
 
 const GET_LIBRARY = gql`
-    query{
-        gameOwned(userId: 1){
-           game{
-               id
-               name
-           }
-           hoursPlayed
+    query GameOwned($userId: Int!){
+        gameOwned(userId: $userId){
+            game{
+            id
+            name
+            images{
+                url
+            }
+            }
+            hoursPlayed
         }
     }
 `
 
-class Gamedetails extends Component{
+class Library extends Component{
     state = {
-        id: parseInt(this.props.match.params.id),
+        userId: parseInt(this.props.match.params.id),
     }
     render(){
-        const {id} = this.state
-        console.log({id})
+        const {userId} = this.state
+        console.log({userId})
         return(
             <div>
-                <Navbar /><br></br><br></br><br></br>
-                <Query query={GET_LIBRARY} variables={{ id }}>
+            {/*<Navbar /><br></br><br></br>   */}
+                <Query query={GET_LIBRARY} variables={{ userId }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
@@ -36,21 +39,21 @@ class Gamedetails extends Component{
                     return(
                         <div className="container">
                             <h1>Your Games</h1><br></br>
-                        {data.gameOwned.map(gameown => (
-                        <Link to={`/gamestore/${gameown.game.id}`}>
-                        <div className="card border-primary" key={gameown.game.id}>
-                        
-                            {/* <img src={`http://10.0.34.205:8000${game.images[0].url}`} className="col-3" alt="" />  */}
+                                    {data.gameOwned.map(gameown =>
+                                    <Link to={`/gamestore/${gameown.game.id}`}>
+                                    <div className="card border-primary" key={gameown.game.id}>
+                            
+                                        <img src={`http://10.0.34.205:8000${gameown.game.images[0].url}`} className="col-3" alt="" /> 
 
-                            <div className="col-3">                                    
-                                <h3 className="card-title">{gameown.game.name}</h3>   
-                                <h5>Hours Played: {gameown.hoursPlayed}</h5>                                     
-                            </div>    
-                                
+                                        <div className="col-3">                                    
+                                            <h3 className="card-title">{gameown.game.name}</h3>   
+                                            <h5>Hours Played: {gameown.hoursPlayed}</h5>                                     
+                                        </div>    
+                                    
+                                    </div>
+                                    </Link>
+                                )}
                         </div>
-                        </Link>
-                            ))}
-                    </div>
                     )                        
                 }}
                 </Query>
@@ -62,4 +65,4 @@ class Gamedetails extends Component{
     }
 }
 
-export default Gamedetails
+export default Library

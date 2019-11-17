@@ -11,7 +11,8 @@ import friends from './components/user/friends'
 import gamedetails from './components/store/gamedetails'
 import profile from './components/user/profile'
 import loggedin from './components/auth/loggedin'
-import library from './components/store/library'
+import logout from './components/auth/logout'
+import Library from './components/store/library'
 import buygame from './components/store/buygame'
 // import logout from './components/auth/logout'
 
@@ -21,12 +22,11 @@ function App() {
     
     <div className="App">
     <BrowserRouter>
-      {/*<Navbar /> */}
+    {/*<Navbar />*/}
       {/* <br></br><br></br><br></br> */}
       <Switch>
         <Route exact path = '/friends' component={friends} />
         <Route exact path = '/gamestore/:id' component={gamedetails} />
-        <Route exact path = '/library/:id' component={library} />
         <Route exact path = '/profile' component={profile} />
         <Route exact path='/login' component={login} />
         <Route exact path='/loggedin' component={loggedin} />
@@ -34,8 +34,9 @@ function App() {
         <Route exact path='/' component={landingPage} />
         <Route exact path ='/gamestore' component={gamestore} />
         <Route exact path ='/merchstore' component={merchstore} />
+        <Route exact path='/logout' component={logout} />
+        <Route exact path = '/library/:id' component={Library} />
         <Route exact path = '/gamestore/:id/buy' component={buygame} />
-        {/* <Route exact path='/logout' component={logout} /> */}
       </Switch>
       </BrowserRouter>
     </div>

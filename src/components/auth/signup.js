@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
-import Navbar from '../navigation/navbar'
+import Navbar from '../navigation/navbar';
 
 
 const SIGNUP_MUTATION = gql`
@@ -28,9 +28,9 @@ class Signup extends Component {
     const { username, email, password, DOB, phoneNo, gender} = this.state
     return (
       <div>
-        <Navbar /><br></br><br></br><br></br>  
-        <div className="container col-sm-5 card border-primary">
-          <br></br><h4>Signup</h4><br></br>
+      {/*<Navbar /><br></br><br></br>   */}
+      <div className="container col-sm-5 card border-primary">
+        <br></br><h4>Signup</h4><br></br>
 
           <div className="form-group">
             <label htmlFor="exampleTextarea">Username</label>
@@ -119,7 +119,8 @@ class Signup extends Component {
           
           </div>
         </div>
-      </div>  
+
+      </div>
     )
   }
 

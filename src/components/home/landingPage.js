@@ -7,7 +7,7 @@ class landingPage extends Component{
     render(){
         return(
             <div>
-             {/* <Navbar /><br></br><br></br>    */}
+        {/*<Navbar /><br></br><br></br>*/}   
             <div className="container my-5">
             
             <ControlledCarousel />

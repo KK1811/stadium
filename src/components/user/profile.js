@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Navbar from '../navigation/navbar'
+import Navbar from '../navigation/navbar';
 
 const GET_PROFILE = gql`
     query {
@@ -24,7 +24,7 @@ class Profile extends Component{
     render(){
         return(
             <div>
-                <Navbar /><br></br><br></br><br></br>
+            {/*<Navbar /><br></br><br></br>   */}
                 <Query query={GET_PROFILE}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';
@@ -37,6 +37,7 @@ class Profile extends Component{
                                 <h1>Profile</h1><br></br>                                   
                                 <div className="card border-primary mb-3" key={data.me.id}>
                                     <h3 className="card-title"><b>Username: </b>{data.me.Customer.username}</h3>
+                                    <h5 className="container"><b>ID: </b>{data.me.id}</h5>
                                     <h5 className="container"><b>Bio: </b>{data.me.bio}</h5>
                                     <h5 className="container"><b>DOB: </b>{data.me.DOB}</h5>
                                     <h5 className="container"><b>Phone Number: </b>{data.me.phoneNo}</h5>

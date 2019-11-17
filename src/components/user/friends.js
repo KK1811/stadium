@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Navbar from '../navigation/navbar'
+import Navbar from '../navigation/navbar';
 
 const GET_FRIENDS = gql`
     query {
@@ -19,7 +19,7 @@ class Friends extends Component{
     render(){
         return(
             <div>
-                <Navbar /><br></br><br></br><br></br>
+            {/* <Navbar /><br></br><br></br>   */}
                 <Query query={GET_FRIENDS}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';
