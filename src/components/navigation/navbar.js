@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SignedInLinks from './signedInLinks'
 import SignedOutLinks from './signedOutLinks'
-import { AUTH_TOKEN } from '../auth/constants'
+// import { AUTH_TOKEN } from '../auth/constants'
 
 const Navbar = () => {
     // _reload = () => {window.location.reload();}

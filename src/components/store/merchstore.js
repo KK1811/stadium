@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import '../../styles/store.css';
+import Navbar from '../navigation/navbar'
 
 const GET_MERCH = gql`
     query {
@@ -27,6 +28,7 @@ class Merchstore extends Component{
     render(){
         return(
             <div>
+                <Navbar /><br></br><br></br><br></br>
                 <Query query={GET_MERCH}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';

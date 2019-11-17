@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.css';
-import Navbar from './components/navigation/navbar';
+// import Navbar from './components/navigation/navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
 import signup from './components/auth/signup'
@@ -11,6 +11,8 @@ import friends from './components/user/friends'
 import gamedetails from './components/store/gamedetails'
 import profile from './components/user/profile'
 import loggedin from './components/auth/loggedin'
+import library from './components/store/library'
+import buygame from './components/store/buygame'
 // import logout from './components/auth/logout'
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
       <Switch>
         <Route exact path = '/friends' component={friends} />
         <Route exact path = '/gamestore/:id' component={gamedetails} />
+        <Route exact path = '/library/:id' component={library} />
         <Route exact path = '/profile' component={profile} />
         <Route exact path='/login' component={login} />
         <Route exact path='/loggedin' component={loggedin} />
@@ -31,6 +34,7 @@ function App() {
         <Route exact path='/' component={landingPage} />
         <Route exact path ='/gamestore' component={gamestore} />
         <Route exact path ='/merchstore' component={merchstore} />
+        <Route exact path = '/gamestore/:id/buy' component={buygame} />
         {/* <Route exact path='/logout' component={logout} /> */}
       </Switch>
       </BrowserRouter>
