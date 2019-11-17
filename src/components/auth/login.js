@@ -3,6 +3,7 @@ import { AUTH_TOKEN } from './constants'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
+import Navbar from '../navigation/navbar';
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($username: String!, $password: String!) {
@@ -22,7 +23,9 @@ class Login extends Component {
   render() {
     const { username, password} = this.state
     return (
-      <div className="container col-sm-5 card border-primary" >
+      <div>
+      {/*<Navbar /><br></br><br></br>*/}
+      <div className="container col-sm-5 card border-primary" >  
         <br></br><h4>Login</h4><br></br>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email</label>
@@ -63,6 +66,7 @@ class Login extends Component {
         <p>Dont have an accout? <Link to="/signup">Signup</Link> </p>
         
         </div>
+      </div>
       </div>
     )
   }

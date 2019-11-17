@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import Navbar from '../navigation/navbar';
 
 const GET_PROFILE = gql`
     query {
@@ -23,6 +24,7 @@ class Profile extends Component{
     render(){
         return(
             <div>
+            {/*<Navbar /><br></br><br></br>   */}
                 <Query query={GET_PROFILE}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';

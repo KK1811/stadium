@@ -11,7 +11,8 @@ import friends from './components/user/friends'
 import gamedetails from './components/store/gamedetails'
 import profile from './components/user/profile'
 import loggedin from './components/auth/loggedin'
-// import logout from './components/auth/logout'
+import logout from './components/auth/logout'
+import Library from './components/store/library'
 
 function App() {
   // _reload = () => {window.location.reload()}
@@ -31,7 +32,8 @@ function App() {
         <Route exact path='/' component={landingPage} />
         <Route exact path ='/gamestore' component={gamestore} />
         <Route exact path ='/merchstore' component={merchstore} />
-        {/* <Route exact path='/logout' component={logout} /> */}
+        <Route exact path='/logout' component={logout} />
+        <Route exact path = '/library/:id' component={Library} />
       </Switch>
       </BrowserRouter>
     </div>
