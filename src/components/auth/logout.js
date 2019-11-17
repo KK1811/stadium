@@ -1,5 +1,5 @@
 import React from 'react'
-import { AUTH_TOKEN } from './constants'
+// import { AUTH_TOKEN } from './constants'
 // import { Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom'
 

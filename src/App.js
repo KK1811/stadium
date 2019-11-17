@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.css';
-import Navbar from './components/navigation/navbar';
+// import Navbar from './components/navigation/navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
 import signup from './components/auth/signup'
@@ -13,6 +13,8 @@ import profile from './components/user/profile'
 import loggedin from './components/auth/loggedin'
 import logout from './components/auth/logout'
 import Library from './components/store/library'
+import buygame from './components/store/buygame'
+// import logout from './components/auth/logout'
 
 function App() {
   // _reload = () => {window.location.reload()}
@@ -34,6 +36,7 @@ function App() {
         <Route exact path ='/merchstore' component={merchstore} />
         <Route exact path='/logout' component={logout} />
         <Route exact path = '/library/:id' component={Library} />
+        <Route exact path = '/gamestore/:id/buy' component={buygame} />
       </Switch>
       </BrowserRouter>
     </div>

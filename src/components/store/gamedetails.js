@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Navbar from '../navigation/navbar';
+import {Link} from 'react-router-dom';  
 
 const GET_DETAILS = gql`
     query Games($id: Int!){
@@ -50,9 +51,9 @@ class Gamedetails extends Component{
                             <h1>{data.game.name}</h1>
                             <h3><b>Description: </b>{data.game.description}</h3>
                             <br></br>
-                            <h3><b>Price: </b>₹{data.game.price}</h3>
+                            <h3><b>Price: </b>{data.game.price}</h3>
                             <br></br>
-                            <button className="btn btn-primary">Buy</button>
+                            <Link to={`/gamestore/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
                             <br></br><br></br><br></br>
                             <h2>Merchandise</h2>
                             <div>
