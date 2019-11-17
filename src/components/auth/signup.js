@@ -3,11 +3,12 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
-import Navbar from '../navigation/navbar';
+// import Navbar from '../navigation/navbar';
+import SignedOutLinks from '../navigation/signedOutLinks'
 
 
 const SIGNUP_MUTATION = gql`
-  mutation SignupMutation($username: String!, $email: String!, $password: String!, $DOB: Date!, $phoneNo: Int!, $gender: Int!) {
+  mutation SignupMutation($username: String!, $email: String!, $password: String!, $DOB: Date!, $phoneNo: String!, $gender: Int!) {
     createUser(username: $username, email: $email, password: $password, DOB: $DOB, phoneNo: $phoneNo, gender: $gender) {
       user{username},
     }
@@ -17,10 +18,10 @@ const SIGNUP_MUTATION = gql`
 class Signup extends Component {
   state = {
     username: '',
-    email:'',
+    email: '',
     password: '',
-    DOB:"2000-01-01",
-    phoneNo: 9870,
+    DOB: "2000-01-01",
+    phoneNo: "9876543210",
     gender: 1,
   }
 
@@ -29,6 +30,7 @@ class Signup extends Component {
     return (
       <div>
       {/*<Navbar /><br></br><br></br>   */}
+      <SignedOutLinks /><br></br>
       <div className="container col-sm-5 card border-primary">
         <br></br><h4>Signup</h4><br></br>
 
@@ -49,7 +51,7 @@ class Signup extends Component {
               className="form-group container"
               value={email}
               onChange={e => this.setState({ email: e.target.value })}
-              type="email"
+              type="text"
               placeholder="Email"
             />
             <br></br>
@@ -85,13 +87,13 @@ class Signup extends Component {
             <br></br>
             <label htmlFor="exampleTextarea">Gender</label>
             <br></br>
-            {/* <input
+             {/* <input
               className="form-group container"
               value={gender}
               onChange={e => this.setState({ gender: e.target.value })}
               type="int"
               placeholder="gender"
-            /> */}
+            />  */}
             <select className="form-control" id="exampleSelect1" onChange={e => this.setState({ gender: parseInt(e.target.value) })}>
               <option value='1' >Male</option>
               <option value='0'>Female</option>

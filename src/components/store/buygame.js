@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import gql from 'graphql-tag';
-import { Mutation } from 'react-apollo';
+import { Mutation, Query } from 'react-apollo';
 import {Link} from 'react-router-dom'
 
 const BUY_GAME=gql`
@@ -23,6 +23,14 @@ const BUY_GAME=gql`
     }
 `
 
+const GET_UID = gql`
+    query {
+        me{
+            id
+        }
+    }
+`
+
 class Buygame extends Component{
     state = {
         gameId: parseInt(this.props.match.params.id),
@@ -38,7 +46,7 @@ class Buygame extends Component{
                             <br></br><br></br><br></br>
                             <h3>Are you sure you want to buy this game?</h3>
                             <Link to="/gamestore"><button className="btn btn-primary">No</button></Link>{'  '}
-                            <button className="btn btn-primary" onClick={buy}>Yes</button>
+                            <Link to="/gamestore"><button className="btn btn-primary" onClick={buy}>Yes</button></Link>
                         </div>
                     )}
                 </Mutation>
@@ -47,8 +55,21 @@ class Buygame extends Component{
     }
 
     _redirect = async data => {
-        const uid = data.buyGame.gameowned.customer.Customer.id
-        this.props.history.push('/library/' + uid)
+        // return(
+        // <Query query={GET_UID}>
+        //     {({loading, error, data}) => {
+        //                 if (loading) return 'Loading...';
+        //                 if (error) return `Error! ${error.message}`;
+        //                 const uid = data.me.id
+        //                 return(
+        //                     <div className="container">
+        //                     {this.props.history.push({`/library/`})}
+        //                     </div>
+        //                 );           
+        //             }}
+        // </Query>
+        // this.props.history.push('/library/' + uid)
+        // )
     }
 }
 

@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import '../../styles/store.css';
 import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';
-// import SignedInLinks from '../navigation/signedInLinks';
+import SignedInLinks from '../navigation/signedInLinks';
 
 // const BASE_URL = "10.0.34.205:8000"
 // let Imgg = require('react-image')
@@ -28,7 +28,7 @@ class Gamestore extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
-            {/* <SignedInLinks /> */}
+            <SignedInLinks /><br></br><br></br>  
                 <Query query={GET_GAMES}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';
@@ -45,7 +45,7 @@ class Gamestore extends Component{
                                 <Link to={`/gamestore/${game.id}`}>
                                 <div className="card border-primary" key={game.id}>
                                 
-                                    <img src={`http://10.0.34.205:8000${game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}} /> 
+                                    <img src={`http://10.0.55.121:8000${game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}} /> 
                                     <center>
                                     <div className="col-3" style={{bottom: "85px"}}>                                    
                                         <h3 className="card-title">{game.name}</h3>                                        

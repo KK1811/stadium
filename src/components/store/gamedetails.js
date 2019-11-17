@@ -52,7 +52,7 @@ class Gamedetails extends Component{
                             <h1>{data.game.name}</h1>
                             <h3><b>Description: </b>{data.game.description}</h3>
                             <br></br>
-                            <img src={`http://10.0.34.205:8000${data.game.images[0].url}`} alt="" className="col-5" />
+                            <img src={`http://10.0.55.121:8000${data.game.images[0].url}`} alt="" className="col-5" />
                             <br></br>
                             <h3><b>Price: </b>₹{data.game.price}</h3>
                             <br></br>
@@ -62,7 +62,7 @@ class Gamedetails extends Component{
                             <div>
                                 {data.game.merchandiseSet.map(merch => (
                                     <div>
-                                        <img src={`http://10.0.34.205:8000${merch.images[0].url}`} alt="" className="col-3" ></img>
+                                        <img src={`http://10.0.55.121:8000${merch.images[0].url}`} alt="" className="col-3" ></img>
                                     </div>
                                 )
 

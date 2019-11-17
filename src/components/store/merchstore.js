@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import '../../styles/store.css';
 // import Navbar from '../navigation/navbar';
-// import SignedInLinks from '../navigation/signedInLinks';
+import SignedInLinks from '../navigation/signedInLinks';
 
 const GET_MERCH = gql`
     query {
@@ -30,7 +30,7 @@ class Merchstore extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
-            {/* <SignedInLinks /> */}
+            <SignedInLinks /><br></br><br></br>  
                 <Query query={GET_MERCH}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';
@@ -43,7 +43,7 @@ class Merchstore extends Component{
                                 <h1>Merch</h1><br></br>
                                 {data.merchs.map(merch => (
                                 <div className="card border-primary">
-                                    <img src={`http://10.0.34.205:8000${merch.images[0].url}`} className="col-3" alt="" style={{top: '70px'}} />
+                                    <img src={`http://10.0.55.121:8000${merch.images[0].url}`} className="col-3" alt="" style={{top: '70px'}} />
                                     <center>
                                     <div className="col-3" style={{bottom: "100px"}}>
                                     <h3 className="card-title">{merch.name}</h3>

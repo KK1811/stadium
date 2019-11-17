@@ -13,7 +13,8 @@ import loggedin from './components/auth/loggedin'
 import logout from './components/auth/logout'
 import Library from './components/store/library'
 import buygame from './components/store/buygame'
-import Navbar from './components/navigation/navbar'
+// import Navbar from './components/navigation/navbar'
+import land1 from './components/home/landingPage.1'
 // import logout from './components/auth/logout'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route exact path='/logout' component={logout} />
         <Route exact path = '/library/:id' component={Library} />
         <Route exact path = '/gamestore/:id/buy' component={buygame} />
+        <Route exact path = '/in' component={land1} />
       </Switch>
       </BrowserRouter>
     </div>

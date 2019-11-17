@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
-import Navbar from '../navigation/navbar';
+// import Navbar from '../navigation/navbar';
+import SignedOutLinks from '../navigation/signedOutLinks'
+
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($username: String!, $password: String!) {
@@ -25,6 +27,7 @@ class Login extends Component {
     return (
       <div>
         {/* <Navbar /><br></br><br></br><br></br> */}
+        <SignedOutLinks /><br></br><br></br>
         <div className="container col-sm-5 card border-primary" >
           <br></br><h4>Login</h4><br></br>
           <div className="form-group">
@@ -76,7 +79,7 @@ class Login extends Component {
     const token = data.tokenAuth.token
     console.log(token)
     this._saveUserData(token)
-    this.props.history.push(`/`)
+    this.props.history.push(`/in`)
   }
   
 

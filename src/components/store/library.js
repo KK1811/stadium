@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';
-// import SignedInLinks from '../navigation/signedInLinks';
+import SignedInLinks from '../navigation/signedInLinks';
 // import inNavbar from '../navigation/inNav'
 
 const GET_LIBRARY = gql`
@@ -31,7 +31,7 @@ class Library extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
-            {/* <SignedInLinks /> */}
+            <SignedInLinks /><br></br><br></br>  
             <inNavbar />
                 <Query query={GET_LIBRARY} variables={{ userId }}>
                 {({loading, error, data}) => {
@@ -47,7 +47,7 @@ class Library extends Component{
                                     <Link to={`/gamestore/${gameown.game.id}`}>
                                     <div className="card border-primary" key={gameown.game.id}>
                             
-                                        <img src={`http://10.0.34.205:8000${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}}/> 
+                                        <img src={`http://10.0.55.121:8000${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}}/> 
                                         <center>
                                         <div className="col-3" style={{bottom: "85px"}}>                                    
                                             <h3 className="card-title">{gameown.game.name}</h3>   
