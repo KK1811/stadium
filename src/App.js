@@ -20,7 +20,7 @@ function App() {
     
     <div className="App">
     <BrowserRouter>
-      {/*<Navbar /> */}
+    {/*<Navbar />*/}
       {/* <br></br><br></br><br></br> */}
       <Switch>
         <Route exact path = '/friends' component={friends} />

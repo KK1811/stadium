@@ -37,6 +37,7 @@ class Profile extends Component{
                                 <h1>Profile</h1><br></br>                                   
                                 <div className="card border-primary mb-3" key={data.me.id}>
                                     <h3 className="card-title"><b>Username: </b>{data.me.Customer.username}</h3>
+                                    <h5 className="container"><b>ID: </b>{data.me.id}</h5>
                                     <h5 className="container"><b>Bio: </b>{data.me.bio}</h5>
                                     <h5 className="container"><b>DOB: </b>{data.me.DOB}</h5>
                                     <h5 className="container"><b>Phone Number: </b>{data.me.phoneNo}</h5>
