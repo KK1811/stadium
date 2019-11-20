@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';
 import SignedOutLinks from '../navigation/signedOutLinks'
+import pacman from '../../assets/pacman.gif'
 
 
 const LOGIN_MUTATION = gql`
@@ -25,10 +26,12 @@ class Login extends Component {
   render() {
     const { username, password} = this.state
     return (
-      <div>
+      <div className="container">
         {/* <Navbar /><br></br><br></br><br></br> */}
-        <SignedOutLinks /><br></br><br></br>
-        <div className="container col-sm-5 card border-primary" >
+        {/* <SignedOutLinks /> */}
+        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <img src={pacman} alt="" className="float-left col-6" />
+        <div className="col-5 card border-primary float-right" >
           <br></br><h4>Login</h4><br></br>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email</label>

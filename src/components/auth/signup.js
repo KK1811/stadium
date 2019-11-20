@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';
 import SignedOutLinks from '../navigation/signedOutLinks'
+import contra from '../../assets/contra.gif'
 
 
 const SIGNUP_MUTATION = gql`
@@ -28,10 +29,12 @@ class Signup extends Component {
   render() {
     const { username, email, password, DOB, phoneNo, gender} = this.state
     return (
-      <div>
+      <div className="container">
       {/*<Navbar /><br></br><br></br>   */}
-      <SignedOutLinks /><br></br>
-      <div className="container col-sm-5 card border-primary">
+      {/* <SignedOutLinks /> */}
+      <br></br><br></br><br></br><br></br>
+      <img src={contra} alt="" className="col-3" />
+      <div className="col-5 card border-primary float-right">
         <br></br><h4>Signup</h4><br></br>
 
           <div className="form-group">
