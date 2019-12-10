@@ -7,34 +7,36 @@ import pokemon from './pokemon.jpg'
 function ControlledCarousel() {
   
     return (
-      <Carousel>
-        <Carousel.Item>
-            <img
-            className="col-lg-10"
-            src={pacman}
-            alt="First slide"
-            />
-        </Carousel.Item>
-        <Carousel.Item>
-            <img
-            className="col-lg-9"
-            src={mario}
-            alt="Second slide"
-            />         
-        </Carousel.Item>
-        <Carousel.Item>
-            <img
-            className="col-lg-12"
-            src={pokemon}
-            alt="Third slide"
-            />
+        <div className="container">
+            <Carousel>
+                <Carousel.Item>
+                    <img
+                    className="col-lg-10"
+                    src={pacman}
+                    alt="First slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                    className="col-lg-9"
+                    src={mario}
+                    alt="Second slide"
+                    />         
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                    className="col-lg-12"
+                    src={pokemon}
+                    alt="Third slide"
+                    />
 
-            {/* <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption> */}
-        </Carousel.Item>
-        </Carousel>
+                    {/* <Carousel.Caption>
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </Carousel.Caption> */}
+                </Carousel.Item>
+            </Carousel>
+        </div>
     );
   }
   

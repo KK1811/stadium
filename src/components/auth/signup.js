@@ -4,8 +4,9 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';
-import SignedOutLinks from '../navigation/signedOutLinks'
+// import SignedOutLinks from '../navigation/signedOutLinks'
 import contra from '../../assets/contra.gif'
+import pacman from '../../assets/pacman.gif'
 
 
 const SIGNUP_MUTATION = gql`
@@ -30,14 +31,13 @@ class Signup extends Component {
     const { username, email, password, DOB, phoneNo, gender} = this.state
     return (
       <div className="container">
-      {/*<Navbar /><br></br><br></br>   */}
-      {/* <SignedOutLinks /> */}
       <br></br><br></br><br></br><br></br>
       <img src={contra} alt="" className="col-3" />
       <div className="col-5 card border-primary float-right">
+
         <br></br><h4>Signup</h4><br></br>
 
-          <div className="form-group">
+          <form className="form-group">
             <label htmlFor="exampleTextarea">Username</label>
             <br></br>
             <input
@@ -102,7 +102,7 @@ class Signup extends Component {
               <option value='0'>Female</option>
               <option value='2'>Other</option>
             </select>
-          </div>
+          </form>
 
           <div className="flex mt3">
           <Mutation

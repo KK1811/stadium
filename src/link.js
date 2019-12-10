@@ -1,0 +1,1 @@
+export const link = 'http://10.0.32.170:8000/graphql/'
