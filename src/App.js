@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './styles/App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
@@ -18,35 +18,49 @@ import {Navbar} from './components/navigation/navbar'
 import test from './components/home/test'
 import store from './components/store/store'
 
-function App() {
-  
-  return (
-    
-    <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <br></br><br></br><br></br>
-        <Switch>
-          <Route exact path = '/friends' component={friends} />
-          <Route exact path = '/gamestore/:id' component={gamedetails} />
-          <Route exact path = '/profile' component={profile} />
-          <Route exact path='/login' component={login} />
-          <Route exact path='/loggedin' component={loggedin} />
-          <Route exact path='/signup' component={signup} />
-          <Route exact path='/' component={landingPage} />
-          <Route exact path ='/gamestore' component={gamestore} />
-          <Route exact path ='/merchstore' component={merchstore} />
-          <Route exact path='/logout' component={logout} />
-          <Route exact path = '/library/:id' component={Library} />
-          <Route exact path = '/gamestore/:id/buy' component={buygame} />
-          <Route exact path = '/test/:in' component={test} />
-          <Route exact path = '/store/:id' component={store} />
-        </Switch>
-        </BrowserRouter>
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      auth : false,
+    };
+  }
 
-    </div>
-    
-  );
+  componentDidMount(){
+    if(localStorage.getItem('token') != null){
+        this.setState({auth : true}); 
+    } 
+  }
+
+  render() {
+    return (
+      
+      <div className="App">
+        <BrowserRouter>
+          <Navbar auth={this.state.auth} />
+          <br></br><br></br><br></br>
+          <Switch>
+            <Route exact path = '/friends' component={friends} />
+            <Route exact path = '/gamestore/:id' component={gamedetails} />
+            <Route exact path = '/profile' component={profile} />
+            <Route exact path='/login' component={login} />
+            <Route exact path='/loggedin' component={loggedin} />
+            <Route exact path='/signup' component={signup} />
+            <Route exact path='/' component={landingPage} />
+            <Route exact path ='/gamestore' component={gamestore} />
+            <Route exact path ='/merchstore' component={merchstore} />
+            <Route exact path='/logout' component={logout} />
+            <Route exact path = '/library/:id' component={Library} />
+            <Route exact path = '/gamestore/:id/buy' component={buygame} />
+            <Route exact path = '/test/:in' component={test} />
+            <Route exact path = '/store/:id' component={store} />
+          </Switch>
+          </BrowserRouter>
+
+      </div>
+      
+    );
+  }
 }
 
 export default App;

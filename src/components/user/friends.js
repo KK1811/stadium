@@ -13,7 +13,9 @@ query {
         phoneNo
         bio
         joined
-        avatar
+        avatar{
+            url
+        }
         Customer{
             username
         }
@@ -38,7 +40,7 @@ class Friends extends Component{
                         if (loading) return 'Loading...';
                         if (error) return `Error! ${error.message}`;
 
-                        console.log(data.me);
+                        console.log("Friends: " + data.me);
 
                         return(
                             <div className="container">
