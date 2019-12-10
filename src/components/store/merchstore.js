@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import '../../styles/store.css';
+import { BASE_URL } from '../../constants';
 // import Navbar from '../navigation/navbar';
 import SignedInLinks from '../navigation/signedInLinks';
 
@@ -43,7 +44,7 @@ class Merchstore extends Component{
                                 <h1>Merch</h1><br></br>
                                 {data.merchs.map(merch => (
                                 <div className="card border-primary">
-                                    <img src={`http://10.0.55.121:8000${merch.images[0].url}`} className="col-3" alt="" style={{top: '70px'}} />
+                                    <img src={`${BASE_URL}${merch.images[0].url}`} className="col-3" alt="" style={{top: '70px'}} />
                                     <center>
                                     <div className="col-3" style={{bottom: "100px"}}>
                                     <h3 className="card-title">{merch.name}</h3>
