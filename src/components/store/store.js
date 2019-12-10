@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../constants';
 
 const GET_GAMES = gql`
     query {
@@ -79,7 +80,7 @@ class Store extends Component{
                                             <Link to={`/gamestore/${game.id}`}>
                                             <div className="card border-primary" key={game.id}>
                                             
-                                                <img src={`http://10.0.55.121:8000${game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}} /> 
+                                                <img src={`${BASE_URL}${game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}} /> 
                                                 <center>
                                                 <div className="col-3" style={{bottom: "85px"}}>                                    
                                                     <h3 className="card-title">{game.name}</h3>                                        
@@ -112,7 +113,7 @@ class Store extends Component{
                                             <h1>Merch</h1><br></br>
                                             {data.merchs.map(merch => (
                                             <div className="card border-primary">
-                                                <img src={`http://10.0.55.121:8000${merch.images[0].url}`} className="col-3" alt="" style={{top: '70px'}} />
+                                                <img src={`${BASE_URL}${merch.images[0].url}`} className="col-3" alt="" style={{top: '70px'}} />
                                                 <center>
                                                 <div className="col-3" style={{bottom: "100px"}}>
                                                 <h3 className="card-title">{merch.name}</h3>
