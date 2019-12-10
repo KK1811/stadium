@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Logout from '../auth/logout'
 
 export class Navbar extends Component{
+    _reload(){window.location.reload()}
     render(){
         const {isAuthenticated} = localStorage.getItem("token") ? true : false
         console.log(this.context);

@@ -37,7 +37,7 @@ function App() {
           <Route exact path ='/gamestore' component={gamestore} />
           <Route exact path ='/merchstore' component={merchstore} />
           <Route exact path='/logout' component={logout} />
-          <Route exact path = '/library/:id' component={Library} />
+          <Route exact path = '/library' component={Library} />
           <Route exact path = '/gamestore/:id/buy' component={buygame} />
           <Route exact path = '/test/:in' component={test} />
           <Route exact path = '/store/:id' component={store} />

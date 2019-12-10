@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { BASE_URL } from '../../constants';
 // import Navbar from '../navigation/navbar';
-import SignedInLinks from '../navigation/signedInLinks'
 
 const GET_PROFILE = gql`
     query {
@@ -26,8 +25,6 @@ class Profile extends Component{
     render(){
         return(
             <div>
-            {/*<Navbar /><br></br><br></br>   */}
-            <SignedInLinks /><br></br><br></br>  
                 <Query query={GET_PROFILE}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';

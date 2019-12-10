@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { BASE_URL } from '../../constants';
-// import Navbar from '../navigation/navbar';
-import SignedInLinks from '../navigation/signedInLinks';
 import {Link} from 'react-router-dom';  
 
 const GET_DETAILS = gql`
@@ -25,6 +23,11 @@ const GET_DETAILS = gql`
                     url
                 }
             }
+            gameOwnedSet{
+                customer{Customer{
+                    username
+                }}
+            }
         }
     }
 `
@@ -38,14 +41,23 @@ class Gamedetails extends Component{
         console.log({id})
         return(
             <div>
-            {/* <Navbar /><br></br><br></br>   */}
-            <SignedInLinks /><br></br><br></br>  
                 <Query query={GET_DETAILS} variables={{ id }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
 
                     console.log(data);
+
+                    var isOwned = false
+                    const username = localStorage.getItem("uname")
+                    
+                    var i;
+                    for (i=0; i<data.game.gameOwnedSet.length; i++){
+                        if (username === data.game.gameOwnedSet[i].customer.Customer.username){
+                            isOwned = true
+                        }
+                    }; 
+
 
                     return(
                         <div>
@@ -55,9 +67,18 @@ class Gamedetails extends Component{
                             <br></br>
                             <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-5" />
                             <br></br>
-                            <h3><b>Price: </b>₹{data.game.price}</h3>
-                            <br></br>
-                            <Link to={`${BASE_URL}/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
+                            <div>
+                                { isOwned === false && (<div>
+                                    <h3><b>Price: </b>₹{data.game.price}</h3>
+                                    <br></br>
+                                    <Link to={`${BASE_URL}/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
+                                </div>)}
+                            </div>
+                            <div>
+                                { isOwned === true && (<div>
+                                    <Link to={`${BASE_URL}/${data.game.id}/buy`}><button className="btn btn-primary">Play</button></Link>
+                                </div>)}
+                            </div>
                             <br></br><br></br><br></br>
                             <h2>Merchandise</h2>
                             <div>
@@ -65,18 +86,13 @@ class Gamedetails extends Component{
                                     <div>
                                         <img src={`${BASE_URL}${merch.images[0].url}`} alt="" className="col-3" ></img>
                                     </div>
-                                )
-
-                                )}
+                                ))}
                             </div>
                         </div>
                     )                        
                 }}
                 </Query>
             </div>
-            /*<div>
-                <h1>{id}</h1>
-            </div>*/
         )
     }
 }

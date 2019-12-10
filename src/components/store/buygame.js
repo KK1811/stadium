@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import gql from 'graphql-tag';
-import { Mutation, Query } from 'react-apollo';
+import { Mutation} from 'react-apollo';
 import {Link} from 'react-router-dom'
 
 const BUY_GAME=gql`
@@ -23,13 +23,13 @@ const BUY_GAME=gql`
     }
 `
 
-const GET_UID = gql`
-    query {
-        me{
-            id
-        }
-    }
-`
+// const GET_UID = gql`
+//     query {
+//         me{
+//             id
+//         }
+//     }
+// `
 
 class Buygame extends Component{
     state = {
