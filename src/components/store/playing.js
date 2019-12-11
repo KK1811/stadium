@@ -9,65 +9,33 @@ export default class Playing extends Component {
             ws: null,
             frame: null,
         };
+
+        this.focusRef = React.createRef();
+        this.focus = this.focus.bind(this)
+
+    }
+
+    focus() {
+        this.focusRef.current.focus()
     }
 
     componentDidMount() {
-        this.connect();
+        //console.log("Socket: " + this.props.ws)
+        document.addEventListener("keydown", this.handleKeyPress, false)
+        this.focusRef.current.focus();
+        //console.log(document.activeElement);
+    }
+
+    componentDidUpdate(){
+        //console.log(document.activeElement);
+        this.focusRef.current.focus();
+        //console.log(document.activeElement);
     }
 
     timeout = 250;
 
-    connect = () => {
-        var ws = new WebSocket("ws://10.0.34.155:8000");
-        let that = this;
-        var connectInterval;
-
-        ws.onopen = () => {
-            console.log("connected websocket main component");
-
-            this.setState({ ws: ws });
-
-            that.timeout = 250;
-            clearTimeout(connectInterval);
-        };
-
-        ws.onclose = e => {
-            console.log(
-                `Socket is closed. Reconnect will be attempted in ${Math.min(
-                    10000 / 1000,
-                    (that.timeout + that.timeout) / 1000
-                )} second.`,
-                e.reason
-            );
-
-            that.timeout = that.timeout + that.timeout;
-            connectInterval = setTimeout(this.check, Math.min(10000, that.timeout));
-        };
-
-        ws.onerror = err => {
-            console.error(
-                "Socket encountered error: ",
-                err.message,
-                "Closing socket"
-            );
-
-            ws.close();
-        };
-
-        ws.onmessage = evt => {
-            // Start reading the blob as text.
-            this.setState({ frame: evt.data })
-            //console.log("Blob: "+ this.state.frame);
-        };
-    };
-
-    check = () => {
-        const { ws } = this.state;
-        if (!ws || ws.readyState == WebSocket.CLOSED) this.connect();
-    };
-
     sendMessage = (data) => {
-        const { websocket } = this.state.ws // websocket instance passed as props to the child component.
+        const  websocket  = this.props.ws // websocket instance passed as props to the child component.
 
         try {
             websocket.send(data) //send data to the server
@@ -76,79 +44,37 @@ export default class Playing extends Component {
         }
     };
 
-    buttonMapping = ['A', 'B', 'Select', 'Start', 'Down', 'Up', 'Left', 'Right', 'L', 'R']
-
-    clickA() {
-        this.sendMessage(0);
-    }
-
-    clickB() {
-        this.sendMessage(1);
-    }
-
-    clickSelect() {
-        this.sendMessage(2);
-    }
-
-    clickStart() {
-        this.sendMessage(3);
-    }
-
-    clickDown() {
-        this.sendMessage(4);
-    }
-
-    clickUp() {
-        this.sendMessage(5);
-    }
-
-    clickLeft() {
-        this.sendMessage(6);
-    }
-
-    clickRight() {
-        this.sendMessage(7);
-    }
-
-    clickL() {
-        this.sendMessage(8);
-    }
-
-    clickR() {
-        this.sendMessage(9);
-    }
-
-    connectHandler(gamepadIndex) {
-        console.log(`Gamepad ${gamepadIndex} connected`);
-    }
-
-    disconnectHandler(gamepadIndex) {
-        console.log(`Gamepad ${gamepadIndex} disconnected !`)
-    }
-
-    buttonChangeHandler(buttonName, down) {
-        console.log(buttonName, down)
-    }
-
-    axisChangeHandler(axisName, value, previousValue) {
-        console.log(axisName, value)
-    }
-
-    buttonDownHandler(buttonName) {
-        console.log(buttonName, 'down')
-    }
-
-    buttonUpHandler(buttonName) {
-        console.log(buttonName, 'up')
+    handleKeyPress = (event) => {
+        if(event.key === 'z' || event.key === 'Z')
+            this.sendMessage(0);
+        if(event.key === 'x' || event.key === 'X')
+            this.sendMessage(1);
+        if(event.key === 'q' || event.key === 'Q')
+            this.sendMessage(2);
+        if(event.key === 'w' || event.key === 'W')
+            this.sendMessage(3);
+        if(event.key === 'ArrowDown')
+            this.sendMessage(4);
+        if(event.key === 'ArrowUp')
+            this.sendMessage(5);
+        if(event.key === 'ArrowLeft')
+            this.sendMessage(6);
+        if(event.key === 'ArrowRight')
+            this.sendMessage(7);
+        if(event.key === 'a' || event.key === 'A')
+            this.sendMessage(8);
+        if(event.key === 's' || event.key === 'S')
+            this.sendMessage(9);
+        console.log("Key: " + event.key);
     }
     render() {
         //console.log(this.props.match.params.id)
         //console.log(this.state.frame)
         const userID = localStorage.getItem("uid")
         return (
-            <div>
-                {this.state.frame && (
-                    <Canvas frame={this.state.frame} />
+            <div ref={this.focusRef} onKeyDown={this.handleKeyPress}>
+                {this.props.frame && (
+                    <Canvas frame={this.props.frame} />
                 )}
             </div>
         )
@@ -169,6 +95,8 @@ class Canvas extends React.Component {
             ctx.drawImage(img, 0, 0)
         }
         img.src = URL.createObjectURL(this.props.frame);
+
+        //console.log("Active: " + document.activeElement.id)
     }
     render() {
         return (
