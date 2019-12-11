@@ -51,9 +51,9 @@ export class Navbar extends Component{
                 { this.state.auth && (
                 <div>
                 <ul className="navbar-nav mr-auto float-left">
-                    <li className="nav-item active"><NavLink to='/store/game'><div className="float-left"><button type="button" className="btn btn-primary right">Game Store</button></div></NavLink></li>
-                    <li className="nav-item active"><NavLink to='/store/merch'><div className="float-left"><button type="button" className="btn btn-primary right">Merch Store</button></div></NavLink></li>
-                    <li className="nav-item active"><NavLink to='/store/library '><div className="float-left"><button type="button" className="btn btn-primary right">Library</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/store/1'><div className="float-left"><button type="button" className="btn btn-primary right">Game Store</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/store/2'><div className="float-left"><button type="button" className="btn btn-primary right">Merch Store</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/library'><div className="float-left"><button type="button" className="btn btn-primary right">Library</button></div></NavLink></li>
                     <li className="nav-item active"><NavLink to='/friends'><div className="float-right"><button type="button" className="btn btn-primary right">Friends</button></div></NavLink></li>
                 </ul>
                 <ul className="navbar-nav mr-auto float-right">                    
