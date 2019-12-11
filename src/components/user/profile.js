@@ -13,7 +13,9 @@ const GET_PROFILE = gql`
             phoneNo
             bio
             joined
-            avatar
+            avatar{
+                url
+            }
             Customer{
                 username
             }
@@ -30,8 +32,6 @@ class Profile extends Component{
                         if (loading) return 'Loading...';
                         if (error) return `Error! ${error.message}`;
 
-                        console.log(data.me.avatar);
-
                         return(
                             <div className="container">
                                 <h1>Profile</h1><br></br>                                   
@@ -42,7 +42,7 @@ class Profile extends Component{
                                     <h5 className="container"><b>DOB: </b>{data.me.DOB}</h5>
                                     <h5 className="container"><b>Phone Number: </b>{data.me.phoneNo}</h5>
                                     <h5 className="container"><b>Date joined: </b>{data.me.joined}</h5>
-                                    <img src= {`${BASE_URL}${data.me.avatar}`} alt="" placeholder={`${BASE_URL}/media/default.png`} />
+                                    <img src= {`${BASE_URL}${data.me.avatar[0].url}`} alt="" />
                                 </div>
                             </div>
                         );           

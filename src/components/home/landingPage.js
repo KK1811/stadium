@@ -3,7 +3,7 @@ import ControlledCarousel from './slideShow'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag';
 // import Navbar from '../navigation/navbar'
-import pacman from '../../assets/simple_pokeball.gif'
+import pokeball from '../../assets/simple_pokeball.gif'
 
 const GET_UID = gql`
 query {
@@ -62,7 +62,7 @@ function LoadingMessage() {
       <div className="splash-screen">
         <img
             className="col-lg-6"
-            src={pacman}
+            src={pokeball}
             alt=""
         />
       </div>

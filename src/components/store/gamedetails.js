@@ -71,12 +71,12 @@ class Gamedetails extends Component{
                                 { isOwned === false && (<div>
                                     <h3><b>Price: </b>₹{data.game.price}</h3>
                                     <br></br>
-                                    <Link to={`${BASE_URL}/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
+                                    <Link to={`/gamestore/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
                                 </div>)}
                             </div>
                             <div>
                                 { isOwned === true && (<div>
-                                    <Link to={`${BASE_URL}/${data.game.id}/buy`}><button className="btn btn-primary">Play</button></Link>
+                                    <Link to={`/gamestore/${data.game.id}/play`}><button className="btn btn-primary">Play</button></Link>
                                 </div>)}
                             </div>
                             <br></br><br></br><br></br>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './styles/App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
@@ -17,6 +17,8 @@ import {Navbar} from './components/navigation/navbar'
 // import logout from './components/auth/logout'
 import test from './components/home/test'
 import store from './components/store/store'
+import playgame from './components/store/playing'
+
 
 function App() {
   
@@ -39,14 +41,13 @@ function App() {
           <Route exact path='/logout' component={logout} />
           <Route exact path = '/library' component={Library} />
           <Route exact path = '/gamestore/:id/buy' component={buygame} />
+          <Route exact path = '/gamestore/:id/play' component={playgame} />
           <Route exact path = '/test/:in' component={test} />
           <Route exact path = '/store/:id' component={store} />
         </Switch>
         </BrowserRouter>
-
-    </div>
-    
-  );
+      </div>
+  )
 }
 
 export default App;
