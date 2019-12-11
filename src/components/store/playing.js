@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Gamepad from 'react-gamepad';
 
-export default class Playing extends Component{
+export default class Playing extends Component {
     constructor(props) {
         super(props);
 
@@ -27,8 +27,8 @@ export default class Playing extends Component{
 
             this.setState({ ws: ws });
 
-            that.timeout = 250; 
-            clearTimeout(connectInterval); 
+            that.timeout = 250;
+            clearTimeout(connectInterval);
         };
 
         ws.onclose = e => {
@@ -40,8 +40,8 @@ export default class Playing extends Component{
                 e.reason
             );
 
-            that.timeout = that.timeout + that.timeout; 
-            connectInterval = setTimeout(this.check, Math.min(10000, that.timeout)); 
+            that.timeout = that.timeout + that.timeout;
+            connectInterval = setTimeout(this.check, Math.min(10000, that.timeout));
         };
 
         ws.onerror = err => {
@@ -55,17 +55,19 @@ export default class Playing extends Component{
         };
 
         ws.onmessage = evt => {
-            this.setState({frame: evt.data})
+            // Start reading the blob as text.
+            this.setState({ frame: evt.data })
+            //console.log("Blob: "+ this.state.frame);
         };
     };
 
     check = () => {
         const { ws } = this.state;
-        if (!ws || ws.readyState == WebSocket.CLOSED) this.connect(); 
+        if (!ws || ws.readyState == WebSocket.CLOSED) this.connect();
     };
 
     sendMessage = (data) => {
-        const {websocket} = this.state.ws // websocket instance passed as props to the child component.
+        const { websocket } = this.state.ws // websocket instance passed as props to the child component.
 
         try {
             websocket.send(data) //send data to the server
@@ -76,78 +78,102 @@ export default class Playing extends Component{
 
     buttonMapping = ['A', 'B', 'Select', 'Start', 'Down', 'Up', 'Left', 'Right', 'L', 'R']
 
-    clickA(){
+    clickA() {
         this.sendMessage(0);
     }
 
-    clickB(){
+    clickB() {
         this.sendMessage(1);
     }
 
-    clickSelect(){
+    clickSelect() {
         this.sendMessage(2);
     }
 
-    clickStart(){
+    clickStart() {
         this.sendMessage(3);
     }
 
-    clickDown(){
+    clickDown() {
         this.sendMessage(4);
     }
 
-    clickUp(){
+    clickUp() {
         this.sendMessage(5);
     }
 
-    clickLeft(){
+    clickLeft() {
         this.sendMessage(6);
     }
 
-    clickRight(){
+    clickRight() {
         this.sendMessage(7);
     }
 
-    clickL(){
+    clickL() {
         this.sendMessage(8);
     }
 
-    clickR(){
+    clickR() {
         this.sendMessage(9);
     }
 
-    connectHandler(gamepadIndex){
+    connectHandler(gamepadIndex) {
         console.log(`Gamepad ${gamepadIndex} connected`);
     }
 
     disconnectHandler(gamepadIndex) {
         console.log(`Gamepad ${gamepadIndex} disconnected !`)
     }
-     
+
     buttonChangeHandler(buttonName, down) {
         console.log(buttonName, down)
     }
-    
+
     axisChangeHandler(axisName, value, previousValue) {
         console.log(axisName, value)
     }
-    
+
     buttonDownHandler(buttonName) {
         console.log(buttonName, 'down')
     }
-    
+
     buttonUpHandler(buttonName) {
         console.log(buttonName, 'up')
     }
-    render(){
-        console.log(this.props.match.params.id)
-        console.log(this.state.frame)
+    render() {
+        //console.log(this.props.match.params.id)
+        //console.log(this.state.frame)
         const userID = localStorage.getItem("uid")
-        return(
+        return (
             <div>
-                <div>User Id: {userID}</div>
-                <div>Game Id: {this.props.match.params.id}</div>
-                <img src={`data:image/png,base64,${this.state.frame}`} alt="" />
+                {this.state.frame && (
+                    <Canvas frame={this.state.frame} />
+                )}
+            </div>
+        )
+    }
+}
+
+class Canvas extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidUpdate() {
+        //console.log("Mount: "+ this.props.frame);
+        const canvas = this.refs.canvas
+        const ctx = canvas.getContext("2d")
+        const img = new Image();
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0)
+        }
+        img.src = URL.createObjectURL(this.props.frame);
+    }
+    render() {
+        return (
+            <div>
+                <canvas ref="canvas" width={1280} />
             </div>
         )
     }
