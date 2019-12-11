@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import '../../styles/store.css';
 import { BASE_URL } from '../../constants';
 // import Navbar from '../navigation/navbar';
-import SignedInLinks from '../navigation/signedInLinks';
+// import SignedInLinks from '../navigation/signedInLinks';
 
 const GET_MERCH = gql`
     query {

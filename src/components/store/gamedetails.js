@@ -60,35 +60,44 @@ class Gamedetails extends Component{
                         }
                     }; 
 
-
                     return(
-                        <div>
-                            <br></br><br></br><br></br>
+                        <div className="container">
                             <h1>{data.game.name}</h1>
-                            <h3><b>Description: </b>{data.game.description}</h3>
-                            <br></br>
-                            <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-5" />
-                            <br></br>
-                            <div>
-                                { isOwned === false && (<div>
-                                    <h3><b>Price: </b>₹{data.game.price}</h3>
-                                    <br></br>
-                                    <Link to={`/gamestore/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
-                                </div>)}
-                            </div>
-                            <div>
-                                { isOwned === true && (<div>
-                                    <Link to={`/gamestore/${data.game.id}/play`}><button className="btn btn-primary">Play</button></Link>
-                                </div>)}
-                            </div>
-                            <br></br><br></br><br></br>
-                            <h2>Merchandise</h2>
-                            <div>
-                                {data.game.merchandiseSet.map(merch => (
+                                <br></br><br></br><br></br>
+                            <div className="container">  
+                                <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-4 float-left" />
+                                <div className="float-right">
+                                    <h3><b>Description: </b>{data.game.description}</h3>
+                                    <br></br><br></br>
                                     <div>
-                                        <img src={`${BASE_URL}${merch.images[0].url}`} alt="" className="col-3" ></img>
+                                        { isOwned === false && (<div>
+                                            <h3><b>Price: </b>₹{data.game.price}</h3>
+                                            <br></br>
+                                            <Link to={`/gamestore/${data.game.id}/buy`}><button className="btn btn-primary">Buy</button></Link>
+                                        </div>)}
                                     </div>
-                                ))}
+                                    <div>
+                                            { isOwned === true && (<div>
+                                                <a href={`${BASE_URL}/container/${data.game.id}`}><button className="btn btn-primary">Play</button></a>
+                                                {/* <br></br><br></br><br></br>
+                                                <a href={`${BASE_URL}/chat/${data.game.name}`} className="btn btn-primary">Chat</a> */}
+                                            </div>)}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                            <div className="container border border-primary">
+                                <h2>Merchandise</h2>
+                                <div>
+                                    {data.game.merchandiseSet.map(merch => (
+                                        <div>
+                                            <br></br><br></br><br></br><br></br><br></br>
+                                            <img src={`${BASE_URL}${merch.images[0].url}`} alt="" className="col-3" style={{ bottom: "50px" }} ></img>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     )                        

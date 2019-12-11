@@ -81,6 +81,10 @@ class Login extends Component {
   }
 
   _confirm = async data => {
+    // if (loading) return 'Loading...';
+    // if (error) return `Error! ${error.message}`;
+    console.log('in confirm')
+    if (!data) return(<div>Enter Valid credentials</div>)
     console.log(data.tokenAuth.token)
     const token = data.tokenAuth.token
     console.log(token)

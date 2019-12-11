@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './styles/App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
@@ -18,6 +18,9 @@ import {Navbar} from './components/navigation/navbar'
 import test from './components/home/test'
 import store from './components/store/store'
 import playgame from './components/store/playing'
+import friendDetails from './components/user/friendDetails'
+import search from './components/navigation/search'
+import chat from './components/user/chat'
 
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
         <br></br><br></br><br></br>
         <Switch>
           <Route exact path = '/friends' component={friends} />
+          <Route exact path = '/friend/:id' component={friendDetails} />
+          <Route exact path = '/friend/:fid/:uid/chat' component={chat} />
+          <Route exact path = '/search/:id' component={search} />
           <Route exact path = '/gamestore/:id' component={gamedetails} />
           <Route exact path = '/profile' component={profile} />
           <Route exact path='/login' component={login} />

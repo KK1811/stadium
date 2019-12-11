@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../constants';
+import Popup from "reactjs-popup";
 
 const GET_GAMES = gql`
     query {
@@ -37,11 +38,21 @@ const GET_MERCH = gql`
         }
     }
 `
-
+const BUY_MERCH = gql`
+    mutation BuyMerch($merchId: Int!){
+        buyMerch(merchID: $merchID){
+            transaction{
+                id
+                amount
+                time
+            }
+        }
+    }
+`
 
 class Store extends Component{
     state = {
-        id: 1
+        id: 1,
     }
     render(){
         const id = parseInt(this.props.match.params.id)
@@ -105,6 +116,15 @@ class Store extends Component{
                                                 <h3 className="card-title">{merch.name}</h3>
                                                 <p className="container"><b>Description: </b>{merch.desc}</p>
                                                 <h5>Price: ₹{merch.price}</h5>
+                                                {/* <button className="btn btn-primary">Buy</button> */}
+                                                {/* <div>{merchID = merch.id}</div> */}
+                                                <Mutation mutation={BUY_MERCH}>
+                                                    {buy => (
+                                                        <Popup trigger={<button className="btn btn-primary"> Buy </button>} position="center">
+                                                        <div> <br></br>Buying Successful !!! </div>
+                                                        </Popup>
+                                                    )}
+                                                </Mutation>
                                                 <br></br>
                                                 </div>
                                                 </center>
