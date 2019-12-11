@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { BASE_URL } from '../../constants';
 // import Navbar from '../navigation/navbar';
-import SignedInLinks from '../navigation/signedInLinks'
 
 const GET_PROFILE = gql`
     query {

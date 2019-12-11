@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';
 // import SignedOutLinks from '../navigation/signedOutLinks'
 import contra from '../../assets/contra.gif'
-import pacman from '../../assets/pacman.gif'
+// import pacman from '../../assets/pacman.gif'
 
 
 const SIGNUP_MUTATION = gql`

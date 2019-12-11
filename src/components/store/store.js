@@ -38,20 +38,6 @@ const GET_MERCH = gql`
     }
 `
 
-const GET_LIBRARY = gql`
-    query GameOwned($userId: Int!){
-        gameOwned(userId: $userId){
-            game{
-            id
-            name
-            images{
-                url
-            }
-            }
-            hoursPlayed
-        }
-    }
-`
 
 class Store extends Component{
     state = {

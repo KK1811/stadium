@@ -3,9 +3,6 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../constants';
-// import Navbar from '../navigation/navbar';
-import SignedInLinks from '../navigation/signedInLinks';
-// import inNavbar from '../navigation/inNav'
 
 const GET_LIBRARY = gql`
     query GameOwned($userId: Int!){
@@ -23,12 +20,9 @@ const GET_LIBRARY = gql`
 `
 
 class Library extends Component{
-    state = {
-        userId: parseInt(this.props.match.params.id),
-    }
     render(){
-        const {userId} = this.state
-        console.log({userId})
+        const userId = localStorage.getItem("uid")
+        console.log(userId)
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}

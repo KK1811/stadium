@@ -71,6 +71,7 @@ class Login extends Component {
             <br></br><br></br>
             
             <p>Dont have an accout? <Link to="/signup">Signup</Link> </p>
+              <div>{data => {if (true) return <div>TEST</div>}}</div>
             
             </div>
           </div>
