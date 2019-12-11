@@ -2,11 +2,21 @@ import React,{Component} from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Logout from '../auth/logout'
 
+function updateNavbar(){
+    if(localStorage.getItem('token') != null){
+        this.setState({auth : true}); 
+    }
+    else{
+        this.setState({auth : false});
+    }
+}
+
 export class Navbar extends Component{ 
     constructor(props){
         super(props);
         this.state = {
-            auth : this.props.auth
+            auth : false,
+            update : updateNavbar.bind(this),
         };
     }
 
@@ -14,8 +24,25 @@ export class Navbar extends Component{
         if(localStorage.getItem('token') != null){
             this.setState({auth : true}); 
         }
+        else{
+            this.setState({auth : false});
+        }
     }
+
+    componentDidUpdate(){
+        if(localStorage.getItem('token') != null){
+            if(!this.state.auth)
+            this.setState({auth : true}); 
+        }
+        else{
+            if(this.state.auth){
+                this.setState({auth : false});
+            }
+        }
+    }
+
     render(){
+        console.log("Nav: " + this.state.update)
         return(
             <div className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <Link to='/' className="navbar-brand">STADIUM</Link>
@@ -31,7 +58,7 @@ export class Navbar extends Component{
                 </ul>
                 <ul className="navbar-nav mr-auto float-right">                    
                     <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
-                    <li className="nav-item active"><Logout /></li>
+                    <li className="nav-item active"><Logout update={this.state.update} /></li>
                 </ul>
                 </div>
                 )}
@@ -42,7 +69,7 @@ export class Navbar extends Component{
                 { !this.state.auth && (
                 <div className="container">
                 <ul className="navbar-nav float-right">
-                    <li className="nav-item active float-right"><NavLink to='/login'><button className="btn btn-primary right">Login</button></NavLink></li>
+                    <li className="nav-item active float-right"><NavLink to={{pathname: '/login', aboutProps:{update: this.state.update} }}><button className="btn btn-primary right">Login</button></NavLink></li>
                     <li className="nav-item active float-right"><NavLink to='/signup'><button className="btn btn-primary right">Signup</button></NavLink></li>
                 </ul>
                 </div>

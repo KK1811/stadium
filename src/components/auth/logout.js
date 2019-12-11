@@ -1,17 +1,25 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Logout = () => {
-    return(
-        <div className="float-right"><NavLink to='/'><button type="button" className="btn btn-primary right" onClick={() => _handleClick()}>Logout</button></NavLink></div>
-    );
-} 
 
+class Logout extends Component{
+    constructor(props){
+        super(props);
+    }
 
-const _handleClick = event => {
-    // Navbar._changeAuthState()
-    console.log("in Logout")
-    localStorage.removeItem("token")
+    _handleClick = event => {
+        // Navbar._changeAuthState()
+        //console.log("in Logout: " + this.props.update())
+        localStorage.removeItem("token")
+        this.props.update()
+    }
+
+    render(){
+        return(
+            <div className="float-right"><NavLink to='/'><button type="button" className="btn btn-primary right" onClick={() => this._handleClick() }>Logout</button></NavLink></div>
+        );
+    }
 }
+
 
 export default Logout

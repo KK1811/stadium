@@ -29,7 +29,7 @@ class Gamestore extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
-            <SignedInLinks /><br></br><br></br>  
+            {/* <SignedInLinks /><br></br><br></br>   */}  
                 <Query query={GET_GAMES}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';

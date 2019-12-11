@@ -32,8 +32,7 @@ class Library extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
-            <SignedInLinks /><br></br><br></br>  
-            <inNavbar />
+            {/* <SignedInLinks /><br></br><br></br>   */}
                 <Query query={GET_LIBRARY} variables={{ userId }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';

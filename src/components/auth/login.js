@@ -16,9 +16,12 @@ const LOGIN_MUTATION = gql`
 
 
 class Login extends Component {
-  state = {
-    username: '',
-    password: '',
+  constructor(props){
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
+    }
   }
 
   render() {
@@ -91,6 +94,7 @@ class Login extends Component {
     console.log("Token: "+localStorage["token"])
     var aValue = localStorage.getItem("token");
     console.log("Token: "+aValue)
+    this.props.location.aboutProps.update();
   }
 }
 

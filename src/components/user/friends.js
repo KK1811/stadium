@@ -34,7 +34,7 @@ class Friends extends Component{
         return(
             <div>
             {/* <Navbar /><br></br><br></br>   */}
-            <SignedInLinks /><br></br><br></br>  
+            {/* <SignedInLinks /><br></br><br></br>   */}  
             <Query query={GET_FRIENDS}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';

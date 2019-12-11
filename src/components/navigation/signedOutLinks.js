@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
-const SignedOutLinks = () => {
+const SignedOutLinks = (props) => {
     return(
         <div className="navbar navbar-expand-lg navbar-dark bg-primary">
         <Link to='/' className="navbar-brand">STADIUM</Link>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import {BASE_URL} from './constants';
 // 1
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
@@ -19,7 +19,7 @@ import { setContext } from 'apollo-link-context'
 
 // 2
 const httpLink = createHttpLink({
-  uri: 'http://10.0.32.170:8000/graphql/',
+  uri: `${BASE_URL}/graphql/`,
 })
 
 const authLink = setContext((_, { headers }) => {

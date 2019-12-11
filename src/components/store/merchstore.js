@@ -31,8 +31,8 @@ class Merchstore extends Component{
         return(
             <div>
             {/*<Navbar /><br></br><br></br>   */}
-            <SignedInLinks /><br></br><br></br>  
-                <Query query={GET_MERCH}>
+            {/* <SignedInLinks /><br></br><br></br>   */}                
+            <Query query={GET_MERCH}>
                     {({loading, error, data}) => {
                         if (loading) return 'Loading...';
                         if (error) return `Error! ${error.message}`;

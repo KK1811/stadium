@@ -19,25 +19,12 @@ import test from './components/home/test'
 import store from './components/store/store'
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      auth : false,
-    };
-  }
-
-  componentDidMount(){
-    if(localStorage.getItem('token') != null){
-        this.setState({auth : true}); 
-    } 
-  }
-
   render() {
     return (
       
       <div className="App">
         <BrowserRouter>
-          <Navbar auth={this.state.auth} />
+          <Navbar />
           <br></br><br></br><br></br>
           <Switch>
             <Route exact path = '/friends' component={friends} />
