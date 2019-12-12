@@ -38,18 +38,17 @@ class Library extends Component{
                         <div className="container">
                             <h1>Your Games</h1><br></br>
                                     {data.gameOwned.map(gameown =>
-                                    <Link to={`/gamestore/${gameown.game.id}`}>
-                                    <div className="card border-primary" key={gameown.game.id}>
-                            
-                                        <img src={`${BASE_URL}${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}}/> 
-                                        <center>
-                                        <div className="col-3" style={{bottom: "85px"}}>                                    
-                                            <h3 className="card-title">{gameown.game.name}</h3>   
-                                            <h5>Hours Played: {gameown.hoursPlayed}</h5>                                     
+                                    <Link to={`/gamestore/${gameown.game.id}`} key={gameown.game.id}>
+                                        <div className="card border-primary" key={gameown.game.id} >
+                                
+                                            <img src={`${BASE_URL}${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "50px"}}/> 
+                                            <center>
+                                            <div className="col-5 text-decoration-none" style={{bottom: "85px"}}>                                    
+                                                <h3 className="card-title text-decoration-none">{gameown.game.name}</h3>   
+                                                <h5>Minutes Played: {gameown.hoursPlayed}</h5>                                   
+                                            </div>
+                                            </center>    
                                         </div>
-                                        </center>    
-                                    
-                                    </div>
                                     </Link>
                                 )}
                         </div>

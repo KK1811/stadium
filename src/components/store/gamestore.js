@@ -6,7 +6,7 @@ import '../../styles/store.css';
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../constants';
 // import Navbar from '../navigation/navbar';
-import SignedInLinks from '../navigation/signedInLinks';
+// import SignedInLinks from '../navigation/signedInLinks';
 
 // const BASE_URL = "10.0.34.205:8000"
 // let Imgg = require('react-image')

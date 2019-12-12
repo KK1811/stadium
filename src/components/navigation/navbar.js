@@ -1,6 +1,8 @@
 import React,{Component} from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Logout from '../auth/logout'
+import Searchbar from './searchbar'
+
 
 function updateNavbar(){
     if(localStorage.getItem('token') != null){
@@ -47,7 +49,7 @@ export class Navbar extends Component{
             <div className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <Link to='/' className="navbar-brand">STADIUM</Link>
                 
-            <div>
+            <div className="collapse navbar-collapse container">
                 { this.state.auth && (
                 <div>
                 <ul className="navbar-nav mr-auto float-left">
@@ -55,11 +57,13 @@ export class Navbar extends Component{
                     <li className="nav-item active"><NavLink to='/store/2'><div className="float-left"><button type="button" className="btn btn-primary right">Merch Store</button></div></NavLink></li>
                     <li className="nav-item active"><NavLink to='/library'><div className="float-left"><button type="button" className="btn btn-primary right">Library</button></div></NavLink></li>
                     <li className="nav-item active"><NavLink to='/friends'><div className="float-right"><button type="button" className="btn btn-primary right">Friends</button></div></NavLink></li>
-                </ul>
-                <ul className="navbar-nav mr-auto float-right">                    
+                {/* </ul>
+                <ul className="navbar-nav mr-auto float-right"> */}
                     <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
                     <li className="nav-item active"><Logout update={this.state.update} /></li>
+                    <li><Searchbar /></li>
                 </ul>
+                
                 </div>
                 )}
                 
@@ -76,8 +80,14 @@ export class Navbar extends Component{
                 )}
             </div>   
 
+           
+
             </div>
         )
+    }
+
+    _search = async tagName => {
+        console.log(this.props)
     }
 
     // _changeAuthStatus = () =>{

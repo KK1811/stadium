@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { Mutation, Query } from 'react-apollo';
 // import { request } from 'http';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import Navbar from '../navigation/navbar';   
 
 const GET_FRIENDS = gql`
@@ -60,7 +60,7 @@ class Friends extends Component{
         fromUserEmail: ''
     }
     render(){
-        const toUserEmail = this.state.toUserEmail
+        var toUserEmail = this.state.toUserEmail
         var fromUserEmail = this.state.fromUserEmail
         return(
             <div>
@@ -79,9 +79,11 @@ class Friends extends Component{
                                 <div className="col-lg-5 float-left border-primary">
                                 <br></br><br></br><br></br><br></br><br></br>
                                     {data.me.friends.map(friend => (
+                                    <Link to={`/friend/${friend.id}`}>    
                                     <div className="card border-primary mb-3">
                                         <h3>{friend.Customer.username}</h3>
-                                    </div>                            
+                                    </div> 
+                                    </Link>                           
                                     ))}
                                 </div>
                             </div>
@@ -89,9 +91,10 @@ class Friends extends Component{
                     }}
                 </Query>
 
-                <div className="col-lg-3 float-right border-primary">
+                <div className="col-lg-3 float-right border-primary" style={{ right:"100px" }}>
                     <div className="border border-primary">
                         <h3>Send Friend Request</h3>
+                        <div className="container">
                         <input
                             className="form-group container"
                             value={toUserEmail}
@@ -99,6 +102,7 @@ class Friends extends Component{
                             type="string"
                             placeholder="Email"
                         />
+                        </div>
 
                         <Mutation
                             mutation={FRIEND_REQUEST_MUTATION}
@@ -114,10 +118,9 @@ class Friends extends Component{
                         </Mutation>
                     </div>
                     
-                    <br></br><br></br><br></br><br></br><br></br>
+                    {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
                     
-                    <div className="border border-10 border-primary">              
-                        <h3>Pending Requests</h3>
+                    <div className="">   
                             <Query query={PENDING_REQUESTS}>
                                 {({loading, error, data}) => {
                                     if (loading) return 'Loading...';
@@ -129,12 +132,14 @@ class Friends extends Component{
                                                 <div>
                                                     {data.pendingRequests.map(friend =>(
                                                         <div key={friend.fromUser.Customer.username}>
-                                                            <div>{fromUserEmail = friend.fromUser.Customer.email}</div>
+                                                            <h3>Pending Requests</h3>
+                                                            <div>{toUserEmail = friend.fromUser.Customer.email}</div>
+                                                            {/* <div>{toUserEmail = 'user2@2.com'}</div>  */}
                                                             <div>{console.log("+++"+fromUserEmail)}</div>
                                                             <div>{friend.fromUser.Customer.username}</div>
                                                             <Mutation
                                                                 mutation={FRIEND_REQUEST_MUTATION}
-                                                                variables={{ fromUserEmail }}
+                                                                variables={{ toUserEmail }}
                                                                 onCompleted={data=> this._confirm(data)}
                                                             >
                                                                 {request => (
