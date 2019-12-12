@@ -56,6 +56,35 @@ class Gamedetails extends Component{
     render(){
         const {id, gameId} = this.state
         console.log({id})
+        url: null,
+    }
+
+    getData(data){
+        console.log("Data: " + data)
+        fetch(`${BASE_URL}/container/${data}`)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                this.setState({
+                    url: result.url,
+                });
+                console.log("URL: "+this.state.url);
+                this.props.history.push({
+                    pathname: `/gamestore/${data}/play`,
+                    state: { url: this.state.url }
+                })
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+                console.log(error);
+            }
+        ) 
+    }
+    render(){
+        const {id} = this.state
+        //console.log({id})
         return(
             <div>
                 <div className="container">
@@ -64,7 +93,7 @@ class Gamedetails extends Component{
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
 
-                    console.log(data);
+                    //console.log(data);
 
                     var isOwned = false
                     const username = localStorage.getItem("uname")
@@ -94,7 +123,7 @@ class Gamedetails extends Component{
                                     </div>
                                     <div>
                                             { isOwned === true && (<div>
-                                                <a href={`${BASE_URL}/container/${data.game.id}`}><button className="btn btn-primary">Play</button></a>
+                                                <button className="btn btn-primary" onClick={() => this.getData(`${data.game.id}`)}>Play</button>
                                                 {/* <br></br><br></br><br></br>
                                                 <a href={`${BASE_URL}/chat/${data.game.name}`} className="btn btn-primary">Chat</a> */}
                                             </div>)}
