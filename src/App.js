@@ -24,6 +24,11 @@ function updateState(url){
   //console.log("Update: "+ url);
   this.setState({url: url, active: !this.state.active});
 }
+
+function closeConn(){
+  this.state.ws.close();  
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +37,7 @@ class App extends Component {
       ws: null,
       frame: null,
       update: updateState.bind(this),
+      close: closeConn.bind(this),
       active: true,
     }
   }
@@ -135,7 +141,7 @@ class App extends Component {
             <Route exact path='/logout' component={logout} />
             <Route exact path='/library' component={Library} />
             <Route exact path='/gamestore/:id/buy' component={buygame} />
-            <Route exact path='/gamestore/:id/play' render={(props) => <Playing {...props} ws={this.state.ws} frame={this.state.frame} url={this.state.url} update={this.state.update} active={this.state.active}/>}/>
+            <Route exact path='/gamestore/:id/play' render={(props) => <Playing {...props} ws={this.state.ws} frame={this.state.frame} url={this.state.url} update={this.state.update} active={this.state.active} close={this.state.close}/>}/>
             <Route exact path='/test/:in' component={test} />
             <Route exact path='/store/:id' component={store} />
           </Switch>

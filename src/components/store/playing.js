@@ -39,6 +39,7 @@ export default class Playing extends Component {
 
     componentWillUnmount(){
         this.setState({active: false});
+        this.props.close();
     }
 
     sendMessage = (data) => {

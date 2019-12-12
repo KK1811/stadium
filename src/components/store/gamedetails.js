@@ -38,9 +38,10 @@ class Gamedetails extends Component{
         url: null,
     }
 
-    getData(data){
+    getData(data, user){
         console.log("Data: " + data)
-        fetch(`${BASE_URL}/container/${data}`)
+        console.log("UserID: " + user)
+        fetch(`${BASE_URL}/container/${data}/${user}`)
         .then(res => res.json())
         .then(
             (result) => {
@@ -77,6 +78,7 @@ class Gamedetails extends Component{
 
                     var isOwned = false
                     const username = localStorage.getItem("uname")
+                    const userID = localStorage.getItem("uid")
                     
                     var i;
                     for (i=0; i<data.game.gameOwnedSet.length; i++){
@@ -103,7 +105,7 @@ class Gamedetails extends Component{
                                     </div>
                                     <div>
                                             { isOwned === true && (<div>
-                                                <button className="btn btn-primary" onClick={() => this.getData(`${data.game.id}`)}>Play</button>
+                                                <button className="btn btn-primary" onClick={() => this.getData(`${data.game.id}`, `${userID}`)}>Play</button>
                                                 {/* <br></br><br></br><br></br>
                                                 <a href={`${BASE_URL}/chat/${data.game.name}`} className="btn btn-primary">Chat</a> */}
                                             </div>)}
