@@ -18,6 +18,9 @@ import { Navbar } from './components/navigation/navbar'
 import test from './components/home/test'
 import store from './components/store/store'
 import Playing from './components/store/playing';
+import friendDetails from './components/user/friendDetails';
+import search from './components/navigation/search';
+import chat from './components/user/chat';
 
 
 class App extends Component {
@@ -104,6 +107,9 @@ class App extends Component {
           <br></br><br></br><br></br>
           <Switch>
             <Route exact path='/friends' component={friends} />
+            <Route exact path='/friend/:id' component={friendDetails} />
+            <Route exact path='/search/:id' component={search} />
+            <Route exact path='/friend/:fid/:uid/chat' component={chat} />
             <Route exact path='/gamestore/:id' component={gamedetails} />
             <Route exact path='/profile' component={profile} />
             <Route exact path='/login' component={login} />
