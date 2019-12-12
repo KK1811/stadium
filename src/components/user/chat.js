@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BASE_URL } from '../../constants'
 import { isFunctionParent } from '@babel/types';
+import './chat.css';
 
 class Chat extends Component {
     state = {
@@ -62,7 +63,7 @@ class Chat extends Component {
 
     componentDidMount = () => {
         this.ws.onopen = () => {
-            console.log("connected");
+            console.log("connected to " + this.websocURL);
         }
         this.ws.onmessage = (e) =>{
             var data = JSON.parse(e.data);
@@ -70,11 +71,11 @@ class Chat extends Component {
             console.log(message);
             var comp = document.createElement("DIV");
             if (message.startsWith(localStorage.getItem("uname") + ' :')){
-                comp.setAttribute("class", "alert-danger col col-3 align-self-end"); 
+                comp.setAttribute("class", "response col col-4 align-self-end"); 
                 message = message.substring(localStorage.getItem("uname").length + 2);
             }
             else{
-                comp.setAttribute("class", "col col-3 align-self-start");
+                comp.setAttribute("class", "reply col col-4 align-self-start");
                 message = message.substring(message.indexOf(':') + 1);
             }
             comp.innerHTML = message;
@@ -112,7 +113,7 @@ render(){
     return (
         <div className="container">
             {/* <textarea ref="log" cols="100" rows="20" className="container"></textarea><br/><br/> */}
-            <div ref="log" className="container border border-primary col"></div><br/><br/>
+            <div ref="log" className="container border border-primary col" style={{"padding":"5%"}}></div><br/><br/>
             <input autoFocus ref="input" type="text" size="100" onKeyUp={this.handleKey} placeholder="Enter Message" className="form-control container" /><br /><br/>
             <input ref="submit" type="button" value="Send" onClick={this.handleClick} className="btn btn-primary" />
         </div>

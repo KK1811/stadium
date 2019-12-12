@@ -38,17 +38,30 @@ class Library extends Component{
                         <div className="container">
                             <h1>Your Games</h1><br></br>
                                     {data.gameOwned.map(gameown =>
-                                    <Link to={`/gamestore/${gameown.game.id}`} key={gameown.game.id}>
-                                        <div className="card border-primary" key={gameown.game.id} >
+                                    // <Link to={`/gamestore/${gameown.game.id}`} key={gameown.game.id}>
+                                    //     <div className="card border-primary" key={gameown.game.id} >
                                 
-                                            <img src={`${BASE_URL}${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "50px"}}/> 
-                                            <center>
-                                            <div className="col-5 text-decoration-none" style={{bottom: "85px"}}>                                    
-                                                <h3 className="card-title text-decoration-none">{gameown.game.name}</h3>   
-                                                <h5>Minutes Played: {gameown.hoursPlayed}</h5>                                   
-                                            </div>
-                                            </center>    
+                                    //         <img src={`${BASE_URL}${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "50px"}}/> 
+                                    //         <center>
+                                    //         <div className="col-5 text-decoration-none" style={{bottom: "85px"}}>                                    
+                                    //             <h3 className="card-title text-decoration-none">{gameown.game.name}</h3>   
+                                    //             <h5>Minutes Played: {gameown.hoursPlayed}</h5>                                   
+                                    //         </div>
+                                    //         </center>    
+                                    //     </div>
+                                    // </Link>
+                                    <Link to={`/gamestore/${gameown.game.id}`} key={gameown.game.id}>
+                                    <div className="container-fluid row" style={{"backgroundColor":"#1b2a49","padding":"4%","borderRadius":"20px","borderColor":"white"}}>
+                                        <div className="col-4" style={{"width":"50px"}}>
+                                            <img src={`${BASE_URL}${gameown.game.images[0].url}`}  alt="" className="col-6" /> 
                                         </div>
+                                        <div className="col-8" >
+                                            <h3 className="card-title text-decoration-none">{gameown.game.name}</h3>   
+                                            <h5>Minutes Played: {gameown.hoursPlayed}</h5>  
+                                        </div>
+                                       
+                                    </div>
+                                    <br/><br/>  
                                     </Link>
                                 )}
                         </div>

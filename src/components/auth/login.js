@@ -27,13 +27,16 @@ class Login extends Component {
   render() {
     const { username, password} = this.state
     return (
-      <div className="container">
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-        <img src={pacman} alt="" className="float-left col-6" />
-        <div className="col-5 card border-primary float-right" >
-          <div className="container mx-auto">
-            <br></br> 
-            <h4>Login</h4>
+      <div className="container-fluid">
+      {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
+      <br></br><br></br>
+      <div className="row">
+        <div className="col-6">
+          <img src={pacman} alt="" className="float-left " style={{"width":"inherit"}}/>
+        </div>
+        <div className="col-6">
+          <div className="container" style={{"padding":"12%","fontFamily":"Josefin Sans"}}>
+          <h3>Login</h3>
             <form className="form-group">
               <label htmlFor="exampleInputEmail1">Email</label>
               <input
@@ -54,8 +57,6 @@ class Login extends Component {
                 placeholder="Password"
               />
             </form>
-            <br></br>
-            <div className="flex mt3">
             <Mutation
                 mutation={LOGIN_MUTATION}
                 variables={{ username, password }}
@@ -68,15 +69,20 @@ class Login extends Component {
                 )}
 
             </Mutation>
+            <br></br>
+            <div className="flex mt3">
             <br></br><br></br>
             
             <p>Dont have an accout? <Link to="/signup">Signup</Link> </p>
               <div>{data => {if (true) return <div>TEST</div>}}</div>
             
             </div>
+
+        </div>
+      </div>          
+            
           </div>
         </div>
-      </div>
     )
   }
 

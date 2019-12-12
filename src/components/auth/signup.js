@@ -30,12 +30,13 @@ class Signup extends Component {
   render() {
     const { username, email, password, DOB, phoneNo, gender} = this.state
     return (
-      <div className="container">
-      <br></br><br></br><br></br><br></br>
-      <img src={contra} alt="" className="col-3" />
-      <div className="col-5 card border-primary float-right">
-
-        <br></br><h4>Signup</h4><br></br>
+      <div className="container-fluid">
+      {/* <br></br><br></br><br></br><br></br> */}
+      <div className="row">
+      <div className="col-6"><br/><br/><br/><br/><br/><br/><br/><br/><img src={contra} alt="" className="col-3" />/</div>
+      <div className="col-6" style={{"padding":"2%","fontFamily":"Josefin Sans"}}>
+        <div className="container" style={{"padding":"8%"}}>
+        <h4>Signup</h4><br></br>
 
           <form className="form-group">
             <label htmlFor="exampleTextarea">Username</label>
@@ -123,8 +124,9 @@ class Signup extends Component {
           
           
           </div>
+          </div>
         </div>
-
+      </div>          
       </div>
     )
   }

@@ -4,8 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import login from './components/auth/login'
 import signup from './components/auth/signup'
 import landingPage from './components/home/landingPage'
-import gamestore from './components/store/gamestore'
-import merchstore from './components/store/merchstore'
 import friends from './components/user/friends'
 import gamedetails from './components/store/gamedetails'
 import profile from './components/user/profile'
@@ -116,8 +114,6 @@ class App extends Component {
             <Route exact path='/loggedin' component={loggedin} />
             <Route exact path='/signup' component={signup} />
             <Route exact path='/' component={landingPage} />
-            <Route exact path='/gamestore' component={gamestore} />
-            <Route exact path='/merchstore' component={merchstore} />
             <Route exact path='/logout' component={logout} />
             <Route exact path='/library' component={Library} />
             <Route exact path='/gamestore/:id/buy' component={buygame} />

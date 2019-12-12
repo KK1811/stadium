@@ -47,19 +47,19 @@ export class Navbar extends Component{
         console.log("Nav: " + this.state.update)
         return(
             <div className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link to='/' className="navbar-brand">STADIUM</Link>
+                <Link to='/' className="navbar-brand" style={{ "fontSize":"2.2em" }}>STADIUM</Link>
                 
             <div className="collapse navbar-collapse container">
                 { this.state.auth && (
                 <div>
                 <ul className="navbar-nav mr-auto float-left">
-                    <li className="nav-item active"><NavLink to='/store/1'><div className="float-left"><button type="button" className="btn btn-primary right">Game Store</button></div></NavLink></li>
-                    <li className="nav-item active"><NavLink to='/store/2'><div className="float-left"><button type="button" className="btn btn-primary right">Merch Store</button></div></NavLink></li>
-                    <li className="nav-item active"><NavLink to='/library'><div className="float-left"><button type="button" className="btn btn-primary right">Library</button></div></NavLink></li>
-                    <li className="nav-item active"><NavLink to='/friends'><div className="float-right"><button type="button" className="btn btn-primary right">Friends</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/store/1'><div className="float-left"><button type="button" className="btn btn-primary btn-lg right" style={{ "fontSize":"1.8em","width":"175px" }}>Game Store</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/store/2'><div className="float-left"><button type="button" className="btn btn-primary right" style={{ "fontSize":"1.8em","width":"180px" }}>Merch Store</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/library'><div className="float-left"><button type="button" className="btn btn-primary right" style={{ "fontSize":"1.8em","width":"120px" }}>Library</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/friends'><div className="float-right"><button type="button" className="btn btn-primary right" style={{ "fontSize":"1.8em","width":"120px" }}>Friends</button></div></NavLink></li>
                 {/* </ul>
                 <ul className="navbar-nav mr-auto float-right"> */}
-                    <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right">Profile</button></div></NavLink></li>
+                    <li className="nav-item active"><NavLink to='/profile'><div className="float-right"><button type="button" className="btn btn-primary right" style={{ "fontSize":"1.8em","width":"120px" }}>Profile</button></div></NavLink></li>
                     <li className="nav-item active"><Logout update={this.state.update} /></li>
                     <li><Searchbar /></li>
                 </ul>
@@ -73,8 +73,8 @@ export class Navbar extends Component{
                 { !this.state.auth && (
                 <div className="container">
                 <ul className="navbar-nav float-right">
-                    <li className="nav-item active float-right"><NavLink to={{pathname: '/login', aboutProps:{update: this.state.update} }}><button className="btn btn-primary right">Login</button></NavLink></li>
-                    <li className="nav-item active float-right"><NavLink to='/signup'><button className="btn btn-primary right">Signup</button></NavLink></li>
+                    <li className="nav-item active float-right"><NavLink to={{pathname: '/login', aboutProps:{update: this.state.update} }}><button className="btn btn-primary btn-lg right" style={{"font-size":"1.8em"}} >Login</button></NavLink></li>
+                    <li className="nav-item active float-right"><NavLink to='/signup'><button className="btn btn-primary right" style={{"font-size":"1.8em"}} >Signup</button></NavLink></li>
                 </ul>
                 </div>
                 )}

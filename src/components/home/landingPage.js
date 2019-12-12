@@ -21,7 +21,7 @@ class landingPage extends Component{
   }
   
   componentDidMount() {
-    setTimeout(() => this.setState({loading: false}), 1000)
+    setTimeout(() => this.setState({loading: false}), 1100)
   }
     _reload(){window.location.reload()}
     

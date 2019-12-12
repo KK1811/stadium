@@ -37,7 +37,7 @@ class Profile extends Component{
                         return(
                             <div className="container">
                                 <h1>Profile</h1><br></br>                                   
-                                <div className="card border-primary mb-3" key={data.me.id}>
+                                <div className="card" key={data.me.id} style={{"backgroundColor":"#1b2a49","padding":"4%","borderRadius":"20px","borderColor":"white"}} >
                                     <img src= {`${BASE_URL}${data.me.avatar[0].url}`} alt="" className="col-3" style={{top: "80px"}}/>
                                     <center>
                                         <div className="col-7" style={{bottom: "85px"}}>  
