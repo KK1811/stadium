@@ -68,7 +68,17 @@ class Chat extends Component {
             var data = JSON.parse(e.data);
             var message = data['message'];
             console.log(message);
-            this.refs.log.value += (message + '\n');
+            var comp = document.createElement("DIV");
+            if (message.startsWith(localStorage.getItem("uname") + ' :')){
+                comp.setAttribute("class", "alert-danger col col-3 align-self-end"); 
+                message = message.substring(localStorage.getItem("uname").length + 2);
+            }
+            else{
+                comp.setAttribute("class", "col col-3 align-self-start");
+                message = message.substring(message.indexOf(':') + 1);
+            }
+            comp.innerHTML = message;
+            this.refs.log.appendChild(comp);
         }
         this.ws.onclose = (e) =>{
             console.error('Channel closed unexpectedly');
@@ -100,9 +110,9 @@ render(){
     // chatLink = this._chat()
     console.log(chatLink)
     return (
-        <div>
+        <div className="container">
             {/* <textarea ref="log" cols="100" rows="20" className="container"></textarea><br/><br/> */}
-            <textarea ref="log" cols="100" rows="20" className="container"></textarea><br/><br/>
+            <div ref="log" className="container border border-primary col"></div><br/><br/>
             <input autoFocus ref="input" type="text" size="100" onKeyUp={this.handleKey} placeholder="Enter Message" className="form-control container" /><br /><br/>
             <input ref="submit" type="button" value="Send" onClick={this.handleClick} className="btn btn-primary" />
         </div>

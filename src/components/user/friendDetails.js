@@ -88,7 +88,8 @@ class FriendDetails extends Component{
                                                             <h5 className="container"><b>Date joined: </b>{friend.joined}</h5>
                                                             {/* <button onClick={e => this._chat()}>Chat</button> */}
                                                             {/* <a href={chatLink} className="btn btn-primary">Chat</a>  */}
-                                                            <Link to={`/friend/${userId}/${localStorage.getItem("uid")}/chat`}>Chat</Link>
+                                                            <br/>
+                                                            <Link to={`/friend/${userId}/${localStorage.getItem("uid")}/chat`} className="btn btn-primary">Chat</Link>
                                                         </div>
                                                     </center>
                                                 </div>
@@ -101,35 +102,6 @@ class FriendDetails extends Component{
                     )
                 }}
             </Query>
-
-            <Query query={GET_LIBRARY} variables={{ userId }}>
-                {({loading, error, data}) => {
-                    if (loading) return 'Loading...';
-                    if (error) return `Error! ${error.message}`;
-
-                    console.log(data);
-
-                    return(
-                        <div className="container">
-                            <h1>Games Owned</h1><br></br>
-                                    {data.gameOwned.map(gameown =>
-                                    <Link to={`/gamestore/${gameown.game.id}`} key={gameown.game.id}>
-                                    <div className="card border-primary mb-3" key={gameown.game.id}>
-                                    <img src={`${BASE_URL}${gameown.game.images[0].url}`} className="col-3" alt="" style={{top: "60px"}}/> 
-                                        <center>
-                                        <div className="col-3" style={{bottom: "85px"}}>                                    
-                                            <h3 className="card-title">{gameown.game.name}</h3>   
-                                            <h5>Hours Played: {gameown.hoursPlayed}</h5>                                     
-                                        </div>
-                                        </center>    
-                                    
-                                    </div>
-                                    </Link>
-                                )}
-                        </div>
-                    )                        
-                }}
-                </Query>
         </div>
         )
     }

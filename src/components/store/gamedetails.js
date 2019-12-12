@@ -85,20 +85,6 @@ class Gamedetails extends Component{
                                     </div>
                                 </div>
                             </div>
-                            
-                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-                            <div className="container border border-primary">
-                                <h2>Merchandise</h2>
-                                <div>
-                                    {data.game.merchandiseSet.map(merch => (
-                                        <div>
-                                            <br></br><br></br><br></br><br></br><br></br>
-                                            <img src={`${BASE_URL}${merch.images[0].url}`} alt="" className="col-3" style={{ bottom: "50px" }} ></img>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
                         </div>
                     )                        
                 }}
