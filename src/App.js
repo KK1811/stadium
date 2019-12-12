@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   connect = () => {
-    var ws = new WebSocket("ws://10.0.34.155:8000");
+    var ws = new WebSocket("ws://10.0.32.170:8080");
     let that = this;
     var connectInterval;
 
