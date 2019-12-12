@@ -8,6 +8,7 @@ export default class Playing extends Component {
         this.state = {
             ws: null,
             frame: null,
+            active: this.props.active,
         };
 
         this.focusRef = React.createRef();
@@ -20,16 +21,24 @@ export default class Playing extends Component {
     }
 
     componentDidMount() {
-        //console.log("Socket: " + this.props.ws)
+        this.setState({url: this.props.location.state.url});
+        //console.log("Socket: " + this.props.location.state.url)
+        this.props.update(this.props.location.state.url);
         document.addEventListener("keydown", this.handleKeyPress, false)
         this.focusRef.current.focus();
         //console.log(document.activeElement);
     }
 
-    componentDidUpdate(){
+    /*componentDidUpdate(){
+        if(!this.state.active)
+            this.props.update(this.state.url);
         //console.log(document.activeElement);
         this.focusRef.current.focus();
         //console.log(document.activeElement);
+    }*/
+
+    componentWillUnmount(){
+        this.setState({active: false});
     }
 
     sendMessage = (data) => {
@@ -63,7 +72,7 @@ export default class Playing extends Component {
             this.sendMessage(9);
         if(event.key === 's' || event.key === 'S')
             this.sendMessage(8);
-        console.log("Key: " + event.key);
+        //console.log("Key: " + event.key);
     }
     render() {
         //console.log(this.props.match.params.id)

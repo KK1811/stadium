@@ -22,25 +22,43 @@ import friendDetails from './components/user/friendDetails';
 import search from './components/navigation/search';
 import chat from './components/user/chat';
 
-
+function updateState(url){
+  //console.log("Update: "+ url);
+  this.setState({url: url, active: !this.state.active});
+}
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      url: null, 
       ws: null,
       frame: null,
+      update: updateState.bind(this),
+      active: true,
     }
   }
 
   componentDidMount(){
+    //console.log("init: " + this.state.url);
     this.connect();
-    console.log("Frame")
+    //console.log("Frame")
+  }
+
+  componentDidUpdate(){
+    if(this.state.ws === null){
+      //console.log("init: " + this.state.url);
+      this.connect();
+    }
   }
 
   connect = () => {
-    var ws = new WebSocket("ws://10.0.32.170:8080");
+    //console.log("WS: " + this.state.url);
+    if(this.state.url === null)
+      return
+    var ws = new WebSocket(`${this.state.url}`);
     let that = this;
     var connectInterval;
+
 
     ws.onopen = () => {
       console.log("connected websocket main component");
@@ -83,7 +101,7 @@ class App extends Component {
 
   check = () => {
     const { ws } = this.state;
-    if (!ws || ws.readyState == WebSocket.CLOSED) this.connect();
+    if (!ws || ws.readyState === WebSocket.CLOSED) this.connect();
   };
 
   sendMessage = (data) => {
@@ -121,7 +139,7 @@ class App extends Component {
             <Route exact path='/logout' component={logout} />
             <Route exact path='/library' component={Library} />
             <Route exact path='/gamestore/:id/buy' component={buygame} />
-            <Route exact path='/gamestore/:id/play' render={(props) => <Playing {...props} ws={this.state.ws} frame={this.state.frame} />}/>
+            <Route exact path='/gamestore/:id/play' render={(props) => <Playing {...props} ws={this.state.ws} frame={this.state.frame} url={this.state.url} update={this.state.update} active={this.state.active}/>}/>
             <Route exact path='/test/:in' component={test} />
             <Route exact path='/store/:id' component={store} />
           </Switch>
