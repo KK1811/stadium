@@ -32,8 +32,6 @@ export default class Playing extends Component {
         //console.log(document.activeElement);
     }
 
-    timeout = 250;
-
     sendMessage = (data) => {
         const  websocket  = this.props.ws // websocket instance passed as props to the child component.
 
@@ -54,17 +52,17 @@ export default class Playing extends Component {
         if(event.key === 'w' || event.key === 'W')
             this.sendMessage(3);
         if(event.key === 'ArrowDown')
-            this.sendMessage(4);
-        if(event.key === 'ArrowUp')
-            this.sendMessage(5);
-        if(event.key === 'ArrowLeft')
-            this.sendMessage(6);
-        if(event.key === 'ArrowRight')
             this.sendMessage(7);
+        if(event.key === 'ArrowUp')
+            this.sendMessage(6);
+        if(event.key === 'ArrowLeft')
+            this.sendMessage(5);
+        if(event.key === 'ArrowRight')
+            this.sendMessage(4);
         if(event.key === 'a' || event.key === 'A')
-            this.sendMessage(8);
-        if(event.key === 's' || event.key === 'S')
             this.sendMessage(9);
+        if(event.key === 's' || event.key === 'S')
+            this.sendMessage(8);
         console.log("Key: " + event.key);
     }
     render() {
@@ -100,8 +98,8 @@ class Canvas extends React.Component {
     }
     render() {
         return (
-            <div>
-                <canvas ref="canvas" width={1280} />
+            <div style={{textAlign:'center'}}>
+                <canvas ref="canvas" style={{width:'1280px',}} />
             </div>
         )
     }

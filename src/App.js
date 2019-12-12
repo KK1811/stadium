@@ -93,6 +93,8 @@ class App extends Component {
     }
   };
 
+  timeout = 250;
+
   render() {
     return (
 
