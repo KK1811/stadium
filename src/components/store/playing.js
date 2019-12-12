@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gamepad from 'react-gamepad';
+//import Gamepad from 'react-gamepad';
 
 export default class Playing extends Component {
     constructor(props) {
