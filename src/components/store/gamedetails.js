@@ -51,14 +51,9 @@ const GET_LEADER = gql`
 class Gamedetails extends Component{
     state = {
         id: parseInt(this.props.match.params.id),
-        gameId: parseInt(this.props.match.params.id)
+        gameId: parseInt(this.props.match.params.id),
+        url:null,
     }
-    render(){
-        const {id, gameId} = this.state
-        console.log({id})
-        url: null,
-    }
-
     getData(data, user){
         console.log("Data: " + data)
         console.log("UserID: " + user)
@@ -83,8 +78,10 @@ class Gamedetails extends Component{
             }
         ) 
     }
+        
     render(){
-        const {id} = this.state
+        const {id, gameId} = this.state
+        console.log({id})
         //console.log({id})
         return(
             <div>
