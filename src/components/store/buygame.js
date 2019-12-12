@@ -45,8 +45,8 @@ class Buygame extends Component{
                         <div>
                             <br></br><br></br><br></br>
                             <h3>Are you sure you want to buy this game?</h3>
-                            <Link to="/gamestore"><button className="btn btn-primary">No</button></Link>{'  '}
-                            <Link to="/gamestore"><button className="btn btn-primary" onClick={buy}>Yes</button></Link>
+                            <Link to="/store/1"><button className="btn btn-primary">No</button></Link>{'  '}
+                            <Link to="/library"><button className="btn btn-primary" onClick={buy}>Yes</button></Link>
                         </div>
                     )}
                 </Mutation>

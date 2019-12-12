@@ -16,7 +16,7 @@ class Logout extends Component{
 
     render(){
         return(
-            <div className="float-right"><NavLink to='/'><button type="button" className="btn btn-primary right" onClick={() => this._handleClick() }>Logout</button></NavLink></div>
+            <div className="float-right"><NavLink to='/'><button type="button" className="btn btn-primary right"  style={{ "fontSize":"1.8em","width":"120px" }} onClick={() => this._handleClick() }>Logout</button></NavLink></div>
         );
     }
 }

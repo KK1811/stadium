@@ -88,9 +88,9 @@ class Gamedetails extends Component{
                     return(
                         <div className="container">
                             <h1>{data.game.name}</h1>
-                                <br></br><br></br><br></br>
+                                <br/><br/><br/><br/><br/><br/>
                             <div className="container">  
-                                <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-4 float-left" />
+                                <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-6 float-left" />
                                 <div className="float-right">
                                     <h3><b>Description: </b>{data.game.description}</h3>
                                     <br></br><br></br>
