@@ -31,10 +31,31 @@ const GET_DETAILS = gql`
         }
     }
 `
+const GET_LEADER = gql`
+    query Leaderboard($gameId: Int!){
+        leaderboard(gameId: $gameId){
+            game{
+                name
+                id
+            }
+            hoursPlayed
+            customer{
+                Customer{
+                    username
+                }
+            }
+        }
+    }
+`
 
 class Gamedetails extends Component{
     state = {
         id: parseInt(this.props.match.params.id),
+        gameId: parseInt(this.props.match.params.id)
+    }
+    render(){
+        const {id, gameId} = this.state
+        console.log({id})
         url: null,
     }
 
@@ -67,8 +88,7 @@ class Gamedetails extends Component{
         //console.log({id})
         return(
             <div>
-            {/* <Navbar /><br></br><br></br>   */}
-            {/* <SignedInLinks /><br></br><br></br>   */}
+                <div className="container">
                 <Query query={GET_DETAILS} variables={{ id }}>
                 {({loading, error, data}) => {
                     if (loading) return 'Loading...';
@@ -92,7 +112,7 @@ class Gamedetails extends Component{
                             <h1>{data.game.name}</h1>
                                 <br/><br/><br/><br/><br/><br/>
                             <div className="container">  
-                                <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-6 float-left" />
+                                <img src={`${BASE_URL}${data.game.images[0].url}`} alt="" className="col-4 float-left" />
                                 <div className="float-right">
                                     <h3><b>Description: </b>{data.game.description}</h3>
                                     <br></br><br></br>
@@ -116,6 +136,28 @@ class Gamedetails extends Component{
                     )                        
                 }}
                 </Query>
+                </div>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <div className="container">
+                    <Query query={GET_LEADER} variables={{ gameId }}>
+                        {({loading, error, data}) => {
+                            if (loading) return 'Loading...';
+                            if (error) return `Error! ${error.message}`;
+                            console.log(data)
+                            return(
+                                <div>
+                                    {data.leaderboard.map(user =>(
+                                        <div className="border border-primary">
+                                            <h5>{user.customer.Customer.username} played for  {user.hoursPlayed} minutes.</h5>
+                                            <br/>
+                                    
+                                        </div>
+                                    ))}
+                                </div>
+                            )
+                        }}
+                    </Query>
+                </div>
             </div>
         )
     }
